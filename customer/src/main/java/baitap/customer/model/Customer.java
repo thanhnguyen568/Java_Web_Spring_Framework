@@ -1,7 +1,7 @@
 package baitap.customer.model;
 
 public class Customer {
-    private String customerId;
+    private String customerNo;
     private String customerName;
     private String customerEmail;
     private String customerAddress;
@@ -9,19 +9,19 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String customerId, String customerName, String customerEmail, String customerAddress) {
-        this.customerId = customerId;
+    public Customer(String customerNo, String customerName, String customerEmail, String customerAddress) {
+        this.customerNo = customerNo;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.customerAddress = customerAddress;
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public String getCustomerNo() {
+        return customerNo;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setCustomerNo(String customerNo) {
+        this.customerNo = customerNo;
     }
 
     public String getCustomerName() {

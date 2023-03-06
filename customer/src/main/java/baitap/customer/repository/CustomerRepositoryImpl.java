@@ -28,8 +28,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public void create(Customer customer) {
-        if (!customerMap.containsKey(customer.getCustomerId())) {
-            customerMap.put(customer.getCustomerId(), customer);
+        if (!customerMap.containsKey(customer.getCustomerNo())) {
+            customerMap.put(customer.getCustomerNo(), customer);
         }
     }
 
@@ -40,15 +40,15 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public void delete(Customer customer) {
-        if (customerMap.containsKey(customer.getCustomerId())) {
-            customerMap.remove(customer.getCustomerId());
+        if (customerMap.containsKey(customer.getCustomerNo())) {
+            customerMap.remove(customer.getCustomerNo());
         }
     }
 
     @Override
     public void update(Customer customer) {
-        if (customerMap.containsKey(customer.getCustomerId())) {
-            customerMap.put(customer.getCustomerId(), customer);
+        if (customerMap.containsKey(customer.getCustomerNo())) {
+            customerMap.put(customer.getCustomerNo(), customer);
         }
     }
 }

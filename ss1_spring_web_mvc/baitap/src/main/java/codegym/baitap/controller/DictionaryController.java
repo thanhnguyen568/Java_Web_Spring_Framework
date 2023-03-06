@@ -30,8 +30,6 @@ public class DictionaryController {
                 model.addAttribute("word", dictionaries.get(i).getVi());
                 model.addAttribute("key", keyword);
                 return "mean/dictionary";
-            } else {
-                model.addAttribute("message", "not found");
             }
         }
         return "mean/dictionary";

@@ -26,7 +26,7 @@ public class CustomerEmailController {
         return matcher.matches();
     }
 
-    @GetMapping("email/")
+    @GetMapping("email")
     String getFormEmail() {
         return "email/email";
     }
@@ -38,7 +38,6 @@ public class CustomerEmailController {
             model.addAttribute("message", "Email is invalid");
             return "email/email";
         }
-
         model.addAttribute("message", email + " is valid");
         return "email/email";
     }
