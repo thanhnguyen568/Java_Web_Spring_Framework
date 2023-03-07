@@ -60,7 +60,7 @@ public class CustomerController {
     }
 
     @GetMapping("/")
-    public String delete(@RequestParam("checkbox") String[] checkbox, Model model) {
+    public String delete(@RequestParam(name = "checkbox") String[] checkbox, Model model) {
         for (String o : checkbox) {
             System.out.println(o);
         }
