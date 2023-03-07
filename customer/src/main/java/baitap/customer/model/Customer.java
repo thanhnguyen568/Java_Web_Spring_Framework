@@ -1,5 +1,7 @@
 package baitap.customer.model;
 
+import org.springframework.stereotype.Component;
+
 public class Customer {
     private String customerNo;
     private String customerName;

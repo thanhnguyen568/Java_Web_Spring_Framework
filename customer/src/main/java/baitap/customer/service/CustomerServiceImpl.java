@@ -23,8 +23,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer findById(String customerId) {
-        return customerRepository.findById(customerId);
+    public Customer findByNo(String customerNo) {
+        return customerRepository.findByNo(customerNo);
     }
 
     @Override

@@ -9,7 +9,7 @@ public interface CustomerService {
 
     void create(Customer customer);
 
-    Customer findById(String customerId);
+    Customer findByNo(String customerNo);
 
     void delete(Customer customer);
 

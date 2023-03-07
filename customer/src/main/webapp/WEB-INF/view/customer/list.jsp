@@ -17,42 +17,47 @@
     <h1>Customer List</h1>
 
     <button type="button" class="btn btn-success">
-        <a href=/customer/create class="text-light">Create</a>
+        <a href="/customers/create" class="text-light">
+            Create
+        </a>
     </button>
-    <!-- Button trigger modal -->
-    <%--        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modelId">Delete</button>--%>
-
     <hr>
 
-    <!-- Table -->
-    <table id="tableList" class="table table-striped table-hover ">
-        <thead class="bg-info">
-        <tr>
-            <th>#</th>
-            <th>Customer No</th>
-            <th>Customer Name</th>
-            <th>Customer Email</th>
-            <th>Customer Address</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${customers}" var="customer">
+    <form action="/customers">
+        <!-- Table -->
+        <table id="tableList" class="table table-striped table-hover ">
+            <thead class="bg-info">
             <tr>
-                <td><input type="checkbox" name="checkbox" value="${customer.customerNo}"></td>
-                <td>${customer.customerNo}</td>
-                <td>${customer.customerName}</td>
-                <td>${customer.customerEmail}</td>
-                <td>${customer.customerAddress}</td>
-                <td>
-                    <button type="button" class="btn btn-warning">
-                        <a class="text-light"
-                           href="/customer/update?customerNo=${customer.customerNo}">Update</a>
-                    </button>
-                </td>
+                <th>#</th>
+                <th>Customer No</th>
+                <th>Customer Name</th>
+                <th>Customer Email</th>
+                <th>Customer Address</th>
+                <th>Action</th>
             </tr>
-        </c:forEach>
-        </tbody>
+            </thead>
+            <tbody>
+            <c:forEach items="${customers}" var="customer">
+                <tr>
+                    <td><input type="checkbox" name="checkbox" value="${customer.customerNo}"></td>
+                    <td>${customer.customerNo}</td>
+                    <td>${customer.customerName}</td>
+                    <td>${customer.customerEmail}</td>
+                    <td>${customer.customerAddress}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning">
+                            <a href="/customers/update?&customerNo=${customer.customerNo}" class="text-light">Update</a>
+                        </button>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modelId">
+            Delete
+        </button>
 
         <!-- Modal -->
         <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
@@ -70,17 +75,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" onclick="deleteAlert(${customer.customerNo})">
-                            Confirm
-                        </button>
+                        <button type="submit" class="btn btn-primary" >Confirm</button>
                     </div>
                 </div>
             </div>
         </div>
+    </form>
 
-    </table>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>

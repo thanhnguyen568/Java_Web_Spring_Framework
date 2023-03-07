@@ -34,8 +34,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public Customer findById(String customerId) {
-        return customerMap.get(customerId);
+    public Customer findByNo(String customerNo) {
+        return customerMap.get(customerNo);
     }
 
     @Override

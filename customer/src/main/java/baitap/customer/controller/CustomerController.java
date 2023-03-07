@@ -11,31 +11,59 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("customer/")
+@RequestMapping("customers")
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("list")
+    @GetMapping()
     public String displayList(Model model) {
         model.addAttribute("customers", customerService.findAll());
         return "customer/list";
     }
 
-    @GetMapping("create")
-    public String showFormCreate(Model model) {
+    @GetMapping("/create")
+    public String showFormCreate() {
         return "customer/create";
     }
 
-    @PostMapping("result")
-    public String create(@RequestParam String customerNo,
-                         @RequestParam String customerName,
-                         @RequestParam String customerEmail,
-                         @RequestParam String customerAddress,
-                         @RequestParam Model model) {
-        Customer customer = new Customer(customerNo, customerName, customerEmail, customerAddress);
-        customerService.create(customer);
+    @PostMapping("/created")
+    public String Created(@RequestParam
+                          String customerNo,
+                          String customerName,
+                          String customerEmail,
+                          String customerAddress,
+                          Model model) {
+        customerService.create(new Customer(customerNo, customerName, customerEmail, customerAddress));
+
         model.addAttribute("customers", customerService.findAll());
-        return "/customer/list";
+        return "redirect:/customers";
+    }
+
+    @GetMapping("/update")
+    public String showFormUpdate(@RequestParam String customerNo, Model model) {
+        model.addAttribute("customer", customerService.findByNo(customerNo));
+        return "customer/update";
+    }
+
+    @PostMapping("updated")
+    public String updated(@RequestParam
+                          String customerNo,
+                          String customerName,
+                          String customerEmail,
+                          String customerAddress,
+                          Model model) {
+        customerService.create(new Customer(customerNo, customerName, customerEmail, customerAddress));
+
+        model.addAttribute("customers", customerService.findAll());
+        return "redirect:/customers";
+    }
+
+    @GetMapping("/")
+    public String delete(@RequestParam("checkbox") String[] checkbox, Model model) {
+        for (String o : checkbox) {
+            System.out.println(o);
+        }
+        return "redirect:/customers";
     }
 }
