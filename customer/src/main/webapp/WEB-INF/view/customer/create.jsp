@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>List Customer</title>
+    <title>Management Customer</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -19,12 +19,16 @@
 </head>
 <body>
 <div class="container-fluid">
+    <h1>
+        <a href="/customers" class="text-info">Management Customer</a>
+    </h1>
+
     <div class="col-4 fla">
         <table class="table">
             <thead>
             <tr>
                 <th>
-                    <h2>Create New</h2>
+                    <h2 class="text-success">Create New</h2>
                 </th>
             </tr>
             </thead>

@@ -28,8 +28,7 @@ public class CustomerController {
     }
 
     @PostMapping("/created")
-    public String Created(@RequestParam
-                          String customerNo,
+    public String Created(@RequestParam String customerNo,
                           String customerName,
                           String customerEmail,
                           String customerAddress,
@@ -47,8 +46,7 @@ public class CustomerController {
     }
 
     @PostMapping("updated")
-    public String updated(@RequestParam
-                          String customerNo,
+    public String updated(@RequestParam String customerNo,
                           String customerName,
                           String customerEmail,
                           String customerAddress,
@@ -59,11 +57,16 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
-    @GetMapping("/")
+    @PostMapping("/delete")
     public String delete(@RequestParam(name = "checkbox") String[] checkbox, Model model) {
-        for (String o : checkbox) {
-            System.out.println(o);
-        }
+            for (String o : checkbox) {
+                System.out.println(o);
+                customerService.delete(customerService.findByNo(o));
+            }
+
+        model.addAttribute("customers", customerService.findAll());
         return "redirect:/customers";
     }
+
+
 }

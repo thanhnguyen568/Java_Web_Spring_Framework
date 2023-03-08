@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>List Customer</title>
+    <title>Management</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -14,16 +14,25 @@
 </head>
 <body>
 <div class="container-fluid">
-    <h1>Customer List</h1>
+    <h1>
+        <a href="/customers" class="text-info">Management Customer</a>
+    </h1>
 
     <button type="button" class="btn btn-success">
         <a href="/customers/create" class="text-light">
             Create
         </a>
     </button>
+
+    <form action="/customers/search">
+        <div class="form-group">
+            <input type="text" name="search" class="form-control float-left">
+            <button type="submit" class="btn btn-dark">Search</button>
+        </div>
+    </form>
     <hr>
 
-    <form action="/customers">
+    <form action="/customers/delete" method="post">
         <!-- Table -->
         <table id="tableList" class="table table-striped table-hover ">
             <thead class="bg-info">
@@ -65,17 +74,17 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Confirm delete</h5>
+                        <h5 class="modal-title"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        Confirm delete?
+                        Confirm delete ?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" >Confirm</button>
+                        <button type="submit" class="btn btn-primary">Confirm</button>
                     </div>
                 </div>
             </div>
@@ -84,6 +93,7 @@
 
 </div>
 
+<!-- JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
@@ -95,7 +105,6 @@
             'pageLength': 100
         })
     })
-
 </script>
 </body>
 </html>
