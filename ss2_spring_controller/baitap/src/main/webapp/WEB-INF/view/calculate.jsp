@@ -5,9 +5,9 @@
 </head>
 <body>
 <h1>Calculator</h1>
-<form action="calculate" method="get">
-  <input type="text" name="number1st" value="${number1st}">
-  <input type="text" name="number2nd" value="${number2nd}">
+<form action="calculate" method="post">
+  <input type="text" name="numberOne" value="${numberOne}">
+  <input type="text" name="numberTwo" value="${numberTwo}">
   <p>
     <input type="submit" name="calculation" value="Addition(+)">
     <input type="submit" name="calculation" value="Subtraction(-)">
