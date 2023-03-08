@@ -69,4 +69,8 @@ public class CustomerController {
     }
 
 
+    public String search(@RequestParam String search, Model model){
+
+        return "redirect:/customers";
+    }
 }

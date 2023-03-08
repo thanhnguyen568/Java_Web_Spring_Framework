@@ -14,25 +14,27 @@
 </head>
 <body>
 <div class="container-fluid">
+
     <h1>
         <a href="/customers" class="text-info">Management Customer</a>
     </h1>
 
-    <button type="button" class="btn btn-success">
-        <a href="/customers/create" class="text-light">
-            Create
-        </a>
-    </button>
-
-    <form action="/customers/search">
-        <div class="form-group">
-            <input type="text" name="search" class="form-control float-left">
-            <button type="submit" class="btn btn-dark">Search</button>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-success">
+                <a href="/customers/create" class="text-light">Create</a>
+            </button>
         </div>
-    </form>
+
+        <form action="/customers/search" class="col form-inline">
+            <input type="text" name="search" class="form-control">
+            <button type="submit" class="btn btn-dark">Search</button>
+        </form>
+    </div>
     <hr>
 
     <form action="/customers/delete" method="post">
+
         <!-- Table -->
         <table id="tableList" class="table table-striped table-hover ">
             <thead class="bg-info">
@@ -89,6 +91,7 @@
                 </div>
             </div>
         </div>
+
     </form>
 
 </div>
@@ -101,7 +104,7 @@
 <script>
     $(document).ready(function () {
         $('#tableList').dataTable({
-            // 'searching': false,
+            'searching': false,
             'pageLength': 100
         })
     })
