@@ -28,13 +28,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void delete(Customer customer) {
-        customerRepository.delete(customer);
+    public void update(Customer customer) {
+        customerRepository.update(customer);
     }
 
     @Override
-    public void update(Customer customer) {
-        customerRepository.update(customer);
+    public void delete(Customer customer) {
+        customerRepository.delete(customer);
     }
 
     public CustomerRepository getCustomerRepository() {

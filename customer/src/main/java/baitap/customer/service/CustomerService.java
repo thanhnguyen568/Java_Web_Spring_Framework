@@ -11,7 +11,8 @@ public interface CustomerService {
 
     Customer findByNo(String customerNo);
 
+    void update(Customer customer);
+
     void delete(Customer customer);
 
-    void update(Customer customer);
 }

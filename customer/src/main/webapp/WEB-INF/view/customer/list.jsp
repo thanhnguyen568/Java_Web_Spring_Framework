@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,9 +16,7 @@
 <body>
 <div class="container-fluid">
 
-    <h1>
-        <a href="/customers" class="text-info">Management Customer</a>
-    </h1>
+    <h1><a href="/customers" class="text-info">Management Customer</a></h1>
 
     <div class="row">
         <div class="col">
@@ -57,7 +56,7 @@
                     <td>${customer.customerAddress}</td>
                     <td>
                         <button type="button" class="btn btn-warning">
-                            <a href="/customers/update?&customerNo=${customer.customerNo}" class="text-light">Update</a>
+                            <a href="/customers/update?&&customerNo=${customer.customerNo}" class="text-light">Update</a>
                         </button>
                     </td>
                 </tr>
@@ -66,9 +65,7 @@
         </table>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modelId">
-            Delete
-        </button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modelId">Delete</button>
 
         <!-- Modal -->
         <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
@@ -76,13 +73,13 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title"></h5>
+                        <h5 class="modal-title">Confirm Delete</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        Confirm delete ?
+                        Are you sure you want to delete ?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

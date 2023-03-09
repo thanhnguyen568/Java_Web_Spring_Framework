@@ -11,8 +11,8 @@ public interface CustomerRepository {
 
     Customer findByNo(String customerNo);
 
-    void delete(Customer customer);
-
     void update(Customer customer);
+
+    void delete(Customer customer);
 
 }

@@ -5,10 +5,7 @@ import baitap.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("customers")
@@ -22,55 +19,55 @@ public class CustomerController {
         return "customer/list";
     }
 
+//    /**
+//     * @GetMapping("/create") public String showFormCreate() {
+//     * return "customer/create";
+//     * }
+//     * @PostMapping("/created") public String Created(@RequestParam String customerNo,
+//     * String customerName,
+//     * String customerEmail,
+//     * String customerAddress,
+//     * Model model) {
+//     * customerService.create(new Customer(customerNo, customerName, customerEmail, customerAddress));
+//     * model.addAttribute("customers", customerService.findAll());
+//     * return "redirect:/customers";
+//     * }
+//     */
+
     @GetMapping("/create")
-    public String showFormCreate() {
+    public String showFormCreate(Model model) {
+        model.addAttribute("customer", new Customer());
         return "customer/create";
     }
 
     @PostMapping("/created")
-    public String Created(@RequestParam String customerNo,
-                          String customerName,
-                          String customerEmail,
-                          String customerAddress,
-                          Model model) {
-        customerService.create(new Customer(customerNo, customerName, customerEmail, customerAddress));
-
-        model.addAttribute("customers", customerService.findAll());
+    public String Created(@ModelAttribute Customer customer, Model model) {
+        customerService.create(customer);
         return "redirect:/customers";
     }
 
     @GetMapping("/update")
-    public String showFormUpdate(@RequestParam String customerNo, Model model) {
+    public String showFormUpdate(@RequestParam("customerNo") String customerNo, Model model) {
         model.addAttribute("customer", customerService.findByNo(customerNo));
         return "customer/update";
     }
 
     @PostMapping("updated")
-    public String updated(@RequestParam String customerNo,
-                          String customerName,
-                          String customerEmail,
-                          String customerAddress,
-                          Model model) {
-        customerService.create(new Customer(customerNo, customerName, customerEmail, customerAddress));
-
-        model.addAttribute("customers", customerService.findAll());
+    public String updated(@ModelAttribute Customer customer, Model model) {
+        customerService.update(customer);
         return "redirect:/customers";
     }
 
     @PostMapping("/delete")
-    public String delete(@RequestParam(name = "checkbox") String[] checkbox, Model model) {
-            for (String o : checkbox) {
-                System.out.println(o);
-                customerService.delete(customerService.findByNo(o));
-            }
-
-        model.addAttribute("customers", customerService.findAll());
+    public String delete(@RequestParam("checkbox") String[] checkbox, Model model) {
+        for (String o : checkbox) {
+            customerService.delete(customerService.findByNo(o));
+        }
         return "redirect:/customers";
     }
 
 
-    public String search(@RequestParam String search, Model model){
-
+    public String search(@RequestParam String search, Model model) {
         return "redirect:/customers";
     }
 }
