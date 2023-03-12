@@ -1,12 +1,13 @@
 package baitap.thymeleaf.repository;
 
 import baitap.thymeleaf.model.Customer;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Repository
 public class CustomerRepositoryImpl implements CustomerRepository{
     private static final Map<Integer, Customer> customerMap;
 

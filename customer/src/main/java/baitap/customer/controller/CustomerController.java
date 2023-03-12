@@ -19,21 +19,6 @@ public class CustomerController {
         return "customer/list";
     }
 
-//    /**
-//     * @GetMapping("/create") public String showFormCreate() {
-//     * return "customer/create";
-//     * }
-//     * @PostMapping("/created") public String Created(@RequestParam String customerNo,
-//     * String customerName,
-//     * String customerEmail,
-//     * String customerAddress,
-//     * Model model) {
-//     * customerService.create(new Customer(customerNo, customerName, customerEmail, customerAddress));
-//     * model.addAttribute("customers", customerService.findAll());
-//     * return "redirect:/customers";
-//     * }
-//     */
-
     @GetMapping("/create")
     public String showFormCreate(Model model) {
         model.addAttribute("customer", new Customer());
