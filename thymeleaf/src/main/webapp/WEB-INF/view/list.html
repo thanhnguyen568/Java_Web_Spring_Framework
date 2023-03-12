@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
 <head th:replace="/layout :: head">
 </head>
 <body>
@@ -9,6 +9,18 @@
         Add new customer
     </a>
 </p>
+
+<div>
+    <form th:action="@{/customers/search}" th:object="${customer}" method="post" novalidate="novalidate">
+        <input type="text" name="search" id="">
+        <input type="submit" value="submit">
+    </form>
+</div>
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}" style="color: brown"></span>
+    </div>
+</div>
 
 <table id="customers">
     <thead>
@@ -32,6 +44,7 @@
     </tr>
     </tbody>
 </table>
+
 <footer th:replace="/layout :: footer"></footer>
 </body>
 </html>

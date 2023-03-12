@@ -13,11 +13,15 @@
 <table id="customers">
     <thead>
     <tr>
-        <th>No.</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Edit</th>
+        <th>customerNo.</th>
+        <th>customerName</th>
+        <th>customerBirthDay</th>
+        <th>customerTel</th>
+        <th>customerEmail</th>
+        <th>customerAddress</th>
+        <th>customerDeliveryAddress</th>
+        <th>customerTaxIndent</th>
+        <th>Update</th>
         <th>Delete</th>
     </tr>
     </thead>
@@ -25,8 +29,12 @@
     <tr th:each="row,rowStat : ${customers}">
         <td><a th:href="@{/customers/{no}/view(no=${row.getCustomerNo()})}" th:text="${row.getCustomerNo()}"></a></td>
         <td th:text="${row.getCustomerName()}"></td>
+        <td th:text="${row.getCustomerBirthDay()}"></td>
+        <td th:text="${row.getCustomerTel()}"></td>
         <td th:text="${row.getCustomerEmail()}"></td>
         <td th:text="${row.getCustomerAddress()}"></td>
+        <td th:text="${row.getCustomerDeliveryAddress()}"></td>
+        <td th:text="${row.getCustomerTaxIndent()}"></td>
         <td><a th:href="@{/customers/{no}/update(no=${row.getCustomerNo()})}">update</a></td>
         <td><a th:href="@{/customers/{no}/delete(no=${row.getCustomerNo()})}">delete</a></td>
     </tr>

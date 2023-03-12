@@ -1,13 +1,13 @@
-package baitap.thymeleaf.repository;
+package be.wms.service;
 
-import baitap.thymeleaf.model.Customer;
+import be.wms.model.Customer;
 
 import java.util.List;
 
-public interface CustomerRepository {
+public interface CustomerService {
     List<Customer> findAll();
 
-    Customer findByNo(int customerNo);
+    Customer findByNo(String customerNo);
 
     void create(Customer customer);
 
