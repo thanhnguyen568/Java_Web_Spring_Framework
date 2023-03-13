@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head">
+<head th:replace="/customer/layout :: head">
 </head>
 <body>
 <h3>Customers</h3>
@@ -13,33 +13,34 @@
 <table id="customers">
     <thead>
     <tr>
-        <th>customerNo.</th>
-        <th>customerName</th>
-        <th>customerBirthDay</th>
-        <th>customerTel</th>
-        <th>customerEmail</th>
-        <th>customerAddress</th>
-        <th>customerDeliveryAddress</th>
-        <th>customerTaxIndent</th>
+        <th>No.</th>
+        <th>Name</th>
+        <th>BirthDay</th>
+        <th>Tel.</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Delivery Address</th>
+        <th>Tax Indent</th>
         <th>Update</th>
         <th>Delete</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="row,rowStat : ${customers}">
-        <td><a th:href="@{/customers/{no}/view(no=${row.getCustomerNo()})}" th:text="${row.getCustomerNo()}"></a></td>
-        <td th:text="${row.getCustomerName()}"></td>
-        <td th:text="${row.getCustomerBirthDay()}"></td>
-        <td th:text="${row.getCustomerTel()}"></td>
-        <td th:text="${row.getCustomerEmail()}"></td>
-        <td th:text="${row.getCustomerAddress()}"></td>
-        <td th:text="${row.getCustomerDeliveryAddress()}"></td>
-        <td th:text="${row.getCustomerTaxIndent()}"></td>
-        <td><a th:href="@{/customers/{no}/update(no=${row.getCustomerNo()})}">update</a></td>
-        <td><a th:href="@{/customers/{no}/delete(no=${row.getCustomerNo()})}">delete</a></td>
+    <tr th:each="row,rowStat : ${customers}" th:object="${row}">
+        <td><a th:href="@{/customers/{no}/view(no=*{customerNo})}" th:text="*{customerNo}"></a></td>
+        <!--<td th:text="${row.getCustomerNo()}"></td>-->
+        <td th:text="*{customerName}"></td>
+        <td th:text="*{customerBirthDay}"></td>
+        <td th:text="*{customerTel}"></td>
+        <td th:text="*{customerEmail}"></td>
+        <td th:text="*{customerAddress}"></td>
+        <td th:text="*{customerDeliveryAddress}"></td>
+        <td th:text="*{customerTaxIndent}"></td>
+        <td><a th:href="@{/customers/{no}/update(no=*{customerNo})}">update</a></td>
+        <td><a th:href="@{/customers/{no}/delete(no=*{customerNo})}">delete</a></td>
     </tr>
     </tbody>
 </table>
-<footer th:replace="/layout :: footer"></footer>
+<footer th:replace="/customer/layout :: footer"></footer>
 </body>
 </html>
