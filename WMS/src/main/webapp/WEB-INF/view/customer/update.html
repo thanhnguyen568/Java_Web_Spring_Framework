@@ -4,7 +4,8 @@
 </head>
 <body>
 <div id="form">
-    <form action="#" th:action="@{/customers/created}" th:object="${customer}" method="post" novalidate="novalidate">
+    <form th:action="@{/customers/updated}" th:object="${customer}" method="post" novalidate="novalidate">
+        <h2>CREATE NEW</h2>
         <div>
             <label>customerNo</label>
             <input type="text" th:field="*{customerNo}"/>

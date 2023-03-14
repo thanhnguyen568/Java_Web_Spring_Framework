@@ -29,7 +29,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Customer findByNo(String customerNo) {
-        return new Customer("100006", "John", "1/1/2000", "012530", "john@codegym.vn", "Hanoi", "Hanoi", "123456789");
+        return customerMap.get(customerNo);
     }
 
     @Override

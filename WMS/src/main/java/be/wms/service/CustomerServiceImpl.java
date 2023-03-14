@@ -19,7 +19,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer findByNo(String customerNo) {
-        return null;
+        return repository.findByNo(customerNo);
     }
 
     @Override

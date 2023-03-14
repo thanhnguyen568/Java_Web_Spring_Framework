@@ -31,7 +31,7 @@
         <th>Delete</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody th:if="${customers}">
     <tr th:each="row,rowStat : ${customers}" th:object="${row}">
         <td><a th:href="@{/customers/{no}/view(no=*{customerNo})}" th:text="*{customerNo}"></a></td>
         <!--<td th:text="${row.getCustomerNo()}"></td>-->
@@ -42,8 +42,7 @@
         <td th:text="*{customerAddress}"></td>
         <td th:text="*{customerDeliveryAddress}"></td>
         <td th:text="*{customerTaxIndent}"></td>
-<!--        <td><a th:href="@{/customers/{no}/update(no=*{customerNo})}">update</a></td>-->
-        <td><a th:href="@{/customers/{id}/update(id=${row.getCustomerNo()})}">edit</a></td>
+        <td><a th:href="@{/customers/{no}/update(no=*{customerNo})}">update</a></td>
         <td><a th:href="@{/customers/{no}/delete(no=*{customerNo})}">delete</a></td>
     </tr>
     </tbody>
