@@ -87,4 +87,18 @@ private String customerTaxIndent;
     public void setCustomerTaxIndent(String customerTaxIndent) {
         this.customerTaxIndent = customerTaxIndent;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerNo='" + customerNo + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", customerBirthDay='" + customerBirthDay + '\'' +
+                ", customerTel='" + customerTel + '\'' +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", customerAddress='" + customerAddress + '\'' +
+                ", customerDeliveryAddress='" + customerDeliveryAddress + '\'' +
+                ", customerTaxIndent='" + customerTaxIndent + '\'' +
+                '}';
+    }
 }

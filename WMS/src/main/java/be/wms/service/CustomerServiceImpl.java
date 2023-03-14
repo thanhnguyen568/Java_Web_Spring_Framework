@@ -10,10 +10,11 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
-    private CustomerRepository customerRepository;
+    private CustomerRepository repository;
+
     @Override
     public List<Customer> findAll() {
-        return customerRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
@@ -23,16 +24,16 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void create(Customer customer) {
-
+        repository.create(customer);
     }
 
     @Override
     public void update(Customer customer) {
-
+        repository.update(customer);
     }
 
     @Override
     public void delete(Customer customer) {
-
+        repository.delete(customer);
     }
 }

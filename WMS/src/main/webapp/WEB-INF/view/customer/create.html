@@ -4,19 +4,39 @@
 </head>
 <body>
 <div id="form">
-    <form th:action="@{/customers/created}" th:object="${customer}" method="POST" novalidate="novalidate">
-        <input type="hidden" th:field="*{customerNo}"/>
+    <form th:action="@{/customers/created}" th:object="${customer}" method="post" novalidate="novalidate">
+        <h2>CREATE NEW</h2>
         <div>
-            <label>Name</label>
+            <label>customerNo</label>
+            <input type="text" th:field="*{customerNo}"/>
+        </div>
+        <div>
+            <label>customerName</label>
             <input type="text" th:field="*{customerName}"/>
         </div>
         <div>
-            <label>Email</label>
-            <input type="email" th:field="*{customerEmail}"/>
+            <label>customerBirthDay</label>
+            <input type="text" th:field="*{customerBirthDay}"/>
         </div>
         <div>
-            <label>Address</label>
+            <label>customerTel</label>
+            <input type="text" th:field="*{customerTel}"/>
+        </div>
+        <div>
+            <label>customerEmail</label>
+            <input type="text" th:field="*{customerEmail}"/>
+        </div>
+        <div>
+            <label>customerAddress</label>
             <input type="text" th:field="*{customerAddress}"/>
+        </div>
+        <div>
+            <label>customerDeliveryAddress</label>
+            <input type="text" th:field="*{customerDeliveryAddress}"/>
+        </div>
+        <div>
+            <label>customerTaxIndent</label>
+            <input type="text" th:field="*{customerTaxIndent}"/>
         </div>
         <input type="submit" value="Save"/>
     </form>

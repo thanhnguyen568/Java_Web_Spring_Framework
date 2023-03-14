@@ -14,14 +14,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     private static final Map<String, Customer> customerMap;
 
     static {
-
         customerMap = new HashMap<>();
         customerMap.put("100001", new Customer("100001", "John", "1/1/2000", "012530", "john@codegym.vn", "Hanoi", "Hanoi", "123456789"));
         customerMap.put("100002", new Customer("100002", "John", "1/1/2000", "012530", "john@codegym.vn", "Hanoi", "Hanoi", "123456789"));
         customerMap.put("100003", new Customer("100003", "John", "1/1/2000", "012530", "john@codegym.vn", "Hanoi", "Hanoi", "123456789"));
         customerMap.put("100004", new Customer("100004", "John", "1/1/2000", "012530", "john@codegym.vn", "Hanoi", "Hanoi", "123456789"));
         customerMap.put("100005", new Customer("100005", "John", "1/1/2000", "012530", "john@codegym.vn", "Hanoi", "Hanoi", "123456789"));
-
     }
 
     @Override
@@ -31,21 +29,25 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Customer findByNo(String customerNo) {
-        return null;
+        return new Customer("100006", "John", "1/1/2000", "012530", "john@codegym.vn", "Hanoi", "Hanoi", "123456789");
     }
 
     @Override
     public void create(Customer customer) {
-
+        if (!customerMap.containsKey(customer.getCustomerNo()))
+            customerMap.put(customer.getCustomerNo(), customer);
     }
 
     @Override
     public void update(Customer customer) {
-
+        if (customerMap.containsKey(customer.getCustomerNo()))
+            customerMap.put(customer.getCustomerNo(), customer);
     }
 
     @Override
     public void delete(Customer customer) {
-
+        if (customerMap.containsKey(customer.getCustomerNo()))
+            customerMap.remove(customer.getCustomerNo());
     }
+
 }

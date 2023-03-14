@@ -10,6 +10,12 @@
     </a>
 </p>
 
+<div class="notify">
+    <div th:if="${message}">
+        <span th:text="${message}" style="color: brown"></span>
+    </div>
+</div>
+
 <table id="customers">
     <thead>
     <tr>
@@ -36,7 +42,8 @@
         <td th:text="*{customerAddress}"></td>
         <td th:text="*{customerDeliveryAddress}"></td>
         <td th:text="*{customerTaxIndent}"></td>
-        <td><a th:href="@{/customers/{no}/update(no=*{customerNo})}">update</a></td>
+<!--        <td><a th:href="@{/customers/{no}/update(no=*{customerNo})}">update</a></td>-->
+        <td><a th:href="@{/customers/{id}/update(id=${row.getCustomerNo()})}">edit</a></td>
         <td><a th:href="@{/customers/{no}/delete(no=*{customerNo})}">delete</a></td>
     </tr>
     </tbody>
