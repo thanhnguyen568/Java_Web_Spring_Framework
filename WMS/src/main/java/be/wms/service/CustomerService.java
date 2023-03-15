@@ -1,6 +1,6 @@
 package be.wms.service;
 
-import be.wms.model.Customer;
+import be.wms.entity.Customer;
 
 import java.util.List;
 

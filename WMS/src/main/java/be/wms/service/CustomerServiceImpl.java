@@ -1,6 +1,6 @@
 package be.wms.service;
 
-import be.wms.model.Customer;
+import be.wms.entity.Customer;
 import be.wms.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

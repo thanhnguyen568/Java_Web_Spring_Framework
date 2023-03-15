@@ -1,14 +1,21 @@
-package be.wms.model;
+package be.wms.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Customer {
-private String customerNo;
-private String customerName;
-private String customerBirthDay;
-private String customerTel;
-private String customerEmail;
-private String customerAddress;
-private String customerDeliveryAddress;
-private String customerTaxIndent;
+    @Id
+    @Column(columnDefinition = "varchar(10)")
+    private String customerNo;
+    private String customerName;
+    private String customerBirthDay;
+    private String customerTel;
+    private String customerEmail;
+    private String customerAddress;
+    private String customerDeliveryAddress;
+    private String customerTaxIndent;
 
     public Customer() {
     }
