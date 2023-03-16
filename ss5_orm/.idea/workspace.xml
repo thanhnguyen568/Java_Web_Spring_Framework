@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65bf6beb-6aa5-402f-bef8-189dba9b9520" name="Changes" comment="" />
+    <list default="true" id="65bf6beb-6aa5-402f-bef8-189dba9b9520" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../WMS/src/main/java/be/wms/config/AppConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../WMS/src/main/java/be/wms/config/AppConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMS/src/main/webapp/WEB-INF/view/customer/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WMS/src/main/webapp/WEB-INF/templates/customer/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMS/src/main/webapp/WEB-INF/view/customer/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WMS/src/main/webapp/WEB-INF/templates/customer/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMS/src/main/webapp/WEB-INF/view/customer/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WMS/src/main/webapp/WEB-INF/templates/customer/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMS/src/main/webapp/WEB-INF/view/customer/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/../WMS/src/main/webapp/WEB-INF/templates/customer/update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ss5_orm.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +54,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Thanh Nguyen/Desktop/Java_Web_Spring_Framework/WMS",
+    "last_opened_file_path": "D:/CodeGym/Module4_Java_Web_Spring_Framework/WMS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -78,6 +95,7 @@
       <updated>1678885950823</updated>
       <workItem from="1678885952916" duration="695000" />
       <workItem from="1678900003651" duration="13000" />
+      <workItem from="1678964446913" duration="625000" />
     </task>
     <servers />
   </component>
