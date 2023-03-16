@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/song/layout :: head">
+</head>
+<body>
+<h3>Customers</h3>
+<p>
+  <a th:href="@{/songs/create}">
+    Add new Song
+  </a>
+</p>
+
+<div class="notify">
+  <div th:if="${message}">
+    <span th:text="${message}" style="color: brown"></span>
+  </div>
+</div>
+
+<table id="customers">
+  <thead>
+  <tr>
+    <th>songNo.</th>
+    <th>songName</th>
+    <th>songSinger</th>
+    <th>songType.</th>
+    <th>songLink</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+  <tbody th:if="${mySongList}">
+  <tr th:each="row,rowStat : ${mySongList}" th:object="${row}">
+    <td><a th:href="@{/songs/{no}/view(no=*{songNo})}" th:text="*{songNo}"></a></td>
+    <!--<td th:text="${row.getCustomerNo()}"></td>-->
+    <td th:text="*{songName}"></td>
+    <td th:text="*{songSinger}"></td>
+    <td th:text="*{songType}"></td>
+    <td th:text="*{songLink}"></td>
+
+    <td><a th:href="@{/songs/{no}/update(no=*{songNo})}">update</a></td>
+    <td><a th:href="@{/songs/{no}/delete(no=*{songNo})}">delete</a></td>
+  </tr>
+  </tbody>
+</table>
+<footer th:replace="/song/layout :: footer"></footer>
+</body>
+</html>
