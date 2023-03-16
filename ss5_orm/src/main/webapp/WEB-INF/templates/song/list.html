@@ -30,12 +30,11 @@
   </thead>
   <tbody th:if="${mySongList}">
   <tr th:each="row,rowStat : ${mySongList}" th:object="${row}">
-    <td><a th:href="@{/songs/{no}/view(no=*{songNo})}" th:text="*{songNo}"></a></td>
-    <!--<td th:text="${row.getCustomerNo()}"></td>-->
+    <td th:text="*{songNo}"></td>
     <td th:text="*{songName}"></td>
     <td th:text="*{songSinger}"></td>
     <td th:text="*{songType}"></td>
-    <td th:text="*{songLink}"></td>
+    <td><a th:href="@{/songs/{no}/view(no=*{songNo})}" th:text="*{songLink}"></a></td>
 
     <td><a th:href="@{/songs/{no}/update(no=*{songNo})}">update</a></td>
     <td><a th:href="@{/songs/{no}/delete(no=*{songNo})}">delete</a></td>

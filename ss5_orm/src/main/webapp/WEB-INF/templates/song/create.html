@@ -5,7 +5,7 @@
 <body>
 <div id="form">
   <form th:action="@{/songs/created}" th:object="${mySong}" method="post" novalidate="novalidate">
-    <h2>CREATE NEW</h2>
+    <h2>CREATE</h2>
     <div>
       <label>songNo</label>
       <input type="text" th:field="*{songNo}"/>

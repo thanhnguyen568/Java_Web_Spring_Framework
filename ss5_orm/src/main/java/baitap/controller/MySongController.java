@@ -5,8 +5,8 @@ import baitap.service.MySongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -29,4 +29,30 @@ public class MySongController {
         return "/song/create";
     }
 
+    @PostMapping("/created")
+    public String created(@ModelAttribute MySong mySong, Model model, RedirectAttributes redirect) {
+        service.create(mySong);
+        redirect.addFlashAttribute("message", "Create new successfully!");
+        return "redirect:/songs";
+    }
+
+    @GetMapping("/{songNo}/update")
+    public String showFormUpdate(@PathVariable String songNo, Model model) {
+        model.addAttribute("mySong", service.findByNo(songNo));
+        return "/song/update";
+    }
+
+    @PostMapping("/updated")
+    public String update(MySong mySong, RedirectAttributes redirect) {
+        service.update(mySong);
+        redirect.addFlashAttribute("message", "update successfully!");
+        return "redirect:/songs";
+    }
+
+    @GetMapping("/{songNo}/delete")
+    public String delete(MySong mySong, RedirectAttributes redirect) {
+        service.delete(mySong);
+        redirect.addFlashAttribute("message", "Removed successfully!");
+        return "redirect:/songs";
+    }
 }
