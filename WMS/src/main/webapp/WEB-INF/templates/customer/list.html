@@ -3,50 +3,96 @@
 <head th:replace="/customer/layout :: head">
 </head>
 <body>
-<h3>Customers</h3>
-<p>
-    <a th:href="@{/customers/create}">
-        Add new customer
-    </a>
-</p>
+<div class="container-fluid">
+    <h3>Management</h3>
+    <p>
+        <button type="button" class="btn btn-success">
+            <a th:href="@{/customers/create}" class="text-light">Add new</a>
+        </button>
+    </p>
 
-<div class="notify">
-    <div th:if="${message}">
-        <span th:text="${message}" style="color: brown"></span>
+    <div class="notify">
+        <div th:if="${message}">
+            <span th:text="${message}" style="color: brown"></span>
+        </div>
     </div>
-</div>
 
-<table id="customers">
-    <thead>
-    <tr>
-        <th>No.</th>
-        <th>Name</th>
-        <th>BirthDay</th>
-        <th>Tel.</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Delivery Address</th>
-        <th>Tax Indent</th>
-        <th>Update</th>
-        <th>Delete</th>
-    </tr>
-    </thead>
-    <tbody th:if="${customers}">
-    <tr th:each="row,rowStat : ${customers}" th:object="${row}">
-        <td><a th:href="@{/customers/{no}/view(no=*{customerNo})}" th:text="*{customerNo}"></a></td>
-        <!--<td th:text="${row.getCustomerNo()}"></td>-->
-        <td th:text="*{customerName}"></td>
-        <td th:text="*{customerBirthDay}"></td>
-        <td th:text="*{customerTel}"></td>
-        <td th:text="*{customerEmail}"></td>
-        <td th:text="*{customerAddress}"></td>
-        <td th:text="*{customerDeliveryAddress}"></td>
-        <td th:text="*{customerTaxIndent}"></td>
-        <td><a th:href="@{/customers/{no}/update(no=*{customerNo})}">update</a></td>
-        <td><a th:href="@{/customers/{no}/delete(no=*{customerNo})}">delete</a></td>
-    </tr>
-    </tbody>
-</table>
-<footer th:replace="/customer/layout :: footer"></footer>
+    <form th:action="@{/customers/deleted}" method="post">
+        <div class="form-group">
+            <table id="customers">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>BirthDay</th>
+                    <th>Tel.</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Delivery Address</th>
+                    <th>Tax Indent</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody th:if="${customers}">
+                <tr th:each="row,rowStat : ${customers}" th:object="${row}">
+                    <td>
+                        <input type="checkbox" th:name="checkbox" th:value="*{customerNo}">
+                    </td>
+                    <td>
+                        <a th:href="@{/customers/view(customerNo=*{customerNo})}" th:text="*{customerNo}"></a>
+                    </td>
+                    <td th:text="*{customerName}"></td>
+                    <td th:text="*{customerBirthDay}"></td>
+                    <td th:text="*{customerTel}"></td>
+                    <td th:text="*{customerEmail}"></td>
+                    <td th:text="*{customerAddress}"></td>
+                    <td th:text="*{customerDeliveryAddress}"></td>
+                    <td th:text="*{customerTaxIndent}"></td>
+                    <td>
+                        <button type="button" class="btn btn-warning">
+                            <a th:href="@{/customers/update(customerNo=*{customerNo})}" class="text-light">update</a>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger">
+                            <a th:href="@{/customers/{no}/delete(no=*{customerNo})}" class="text-light">Delete</a>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modelId">
+                Delete
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirm Delete</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure confirm delete?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <footer th:replace="/customer/layout :: footer"></footer>
+</div>
 </body>
 </html>

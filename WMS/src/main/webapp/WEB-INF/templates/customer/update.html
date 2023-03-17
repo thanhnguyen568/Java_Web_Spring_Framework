@@ -3,12 +3,14 @@
 <head th:replace="/customer/layout :: head">
 </head>
 <body>
-<div id="form">
+<h3>Management</h3>
+
+<div class="container-fluid" id="form">
     <form th:action="@{/customers/updated}" th:object="${customer}" method="post" novalidate="novalidate">
-        <h2>CREATE NEW</h2>
+        <h3>UPDATE</h3>
+
         <div>
-            <label>customerNo</label>
-            <input type="text" th:field="*{customerNo}"/>
+            <input type="hidden" th:field="*{customerNo}"/>
         </div>
         <div>
             <label>customerName</label>

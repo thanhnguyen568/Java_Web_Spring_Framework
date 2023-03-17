@@ -36,8 +36,8 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
-    @GetMapping("/{customerNo}/update")
-    public String showFormUpdate(@PathVariable String customerNo, Model model) {
+    @GetMapping("/update")
+    public String showFormUpdate(@RequestParam String customerNo, Model model) {
         model.addAttribute("customer", service.findByNo(customerNo));
         return "/customer/update";
     }
@@ -49,10 +49,20 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
-    @GetMapping("/{customerNo}/delete")
-    public String delete(Customer customer, RedirectAttributes redirect) {
-        service.delete(customer);
-        redirect.addFlashAttribute("message", "Removed successfully!");
+    @PostMapping("/deleted")
+    public String delete(@RequestParam("checkbox") String[] checkbox, Model model, RedirectAttributes redirect) {
+        for (String o : checkbox) {
+            service.delete(service.findByNo(o));
+            redirect.addFlashAttribute("message", "Removed successfully!");
+        }
         return "redirect:/customers";
     }
+
+//    @GetMapping("/{customerNo}/delete")
+//    public String delete(@ModelAttribute Customer customer, RedirectAttributes redirect) {
+//        service.delete(customer);
+//        redirect.addFlashAttribute("message", "Removed successfully!");
+//        return "redirect:/customers";
+//    }
 }
+
