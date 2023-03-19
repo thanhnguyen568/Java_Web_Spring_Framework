@@ -18,12 +18,11 @@ public class CustomerController {
 
     @GetMapping("")
     public String display(Model model) {
-        List<Customer> customerList = service.findAll();
-        model.addAttribute("customers", customerList);
+        model.addAttribute("customers", service.findAll());
         return "/customer/list";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/create-customer")
     public String showFormCreate(Model model) {
         model.addAttribute("customer", new Customer());
         return "/customer/create";
@@ -36,7 +35,7 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
-    @GetMapping("/update")
+    @GetMapping("/update-customer")
     public String showFormUpdate(@RequestParam String customerNo, Model model) {
         model.addAttribute("customer", service.findByNo(customerNo));
         return "/customer/update";

@@ -13,36 +13,37 @@
             <input type="hidden" th:field="*{customerNo}"/>
         </div>
         <div>
-            <label>customerName</label>
+            <label>Name</label>
             <input type="text" th:field="*{customerName}"/>
         </div>
         <div>
-            <label>customerBirthDay</label>
-            <input type="text" th:field="*{customerBirthDay}"/>
+            <label>BirthDay</label>
+            <input type="date" th:field="*{customerBirthDay}"/>
         </div>
         <div>
-            <label>customerTel</label>
+            <label>Tel</label>
             <input type="text" th:field="*{customerTel}"/>
         </div>
         <div>
-            <label>customerEmail</label>
+            <label>Email</label>
             <input type="text" th:field="*{customerEmail}"/>
         </div>
         <div>
-            <label>customerAddress</label>
+            <label>Address</label>
             <input type="text" th:field="*{customerAddress}"/>
         </div>
         <div>
-            <label>customerDeliveryAddress</label>
+            <label>DeliveryAddress</label>
             <input type="text" th:field="*{customerDeliveryAddress}"/>
         </div>
         <div>
-            <label>customerTaxIndent</label>
+            <label>TaxIndent</label>
             <input type="text" th:field="*{customerTaxIndent}"/>
         </div>
         <input type="submit" value="Save"/>
     </form>
 </div>
+
 <footer th:replace="/customer/layout :: footer"></footer>
 </body>
 </html>
