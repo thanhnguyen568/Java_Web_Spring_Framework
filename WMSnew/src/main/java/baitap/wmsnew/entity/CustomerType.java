@@ -49,12 +49,4 @@ public class CustomerType {
         this.customers = customers;
     }
 
-    @Override
-    public String toString() {
-        return "CustomerType{" +
-                "typeNo=" + typeNo +
-                ", typeName='" + typeName + '\'' +
-                ", customers=" + customers +
-                '}';
-    }
 }

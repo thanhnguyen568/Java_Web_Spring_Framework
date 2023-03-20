@@ -1,6 +1,5 @@
 package baitap.wmsnew.service;
 
-import baitap.wmsnew.entity.Customer;
 import baitap.wmsnew.entity.CustomerType;
 
 import java.util.List;

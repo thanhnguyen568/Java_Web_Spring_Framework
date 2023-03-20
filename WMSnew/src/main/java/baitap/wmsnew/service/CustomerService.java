@@ -2,6 +2,8 @@ package baitap.wmsnew.service;
 
 import baitap.wmsnew.entity.Customer;
 import baitap.wmsnew.entity.CustomerType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -16,6 +18,5 @@ public interface CustomerService {
 
     void remove(long customerNo);
 
-    List<Customer> findAllByCustomerType(CustomerType customerType);
-
+    Page<Customer> findAll(Pageable pageable);
 }

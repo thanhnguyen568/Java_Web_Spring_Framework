@@ -1,10 +1,11 @@
 package baitap.wmsnew.service.impl;
 
 import baitap.wmsnew.entity.Customer;
-import baitap.wmsnew.entity.CustomerType;
 import baitap.wmsnew.repository.CustomerRepository;
 import baitap.wmsnew.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -52,9 +53,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> findAllByCustomerType(CustomerType customerType) {
-        return repository.findAllByCustomerType(customerType);
+    public Page<Customer> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
     }
-
 
 }

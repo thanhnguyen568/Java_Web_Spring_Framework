@@ -9,6 +9,4 @@ import java.util.List;
 
 @Repository
 public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {
-    List<Customer> findAllByCustomerType(CustomerType customerType);
-
 }
