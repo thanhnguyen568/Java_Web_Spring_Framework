@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "varchar(10)")
+//    @Column(columnDefinition = "long")
     private long customerNo;
     private String customerCode;
     private String customerCreateDate;
@@ -16,13 +16,16 @@ public class Customer {
     private String customerTel;
     private String customerEmail;
     private String customerDeliveryAddress;
+    @ManyToOne
+    @JoinColumn(name = "typeNo")
+    private CustomerType customerType;
 
     public Customer() {
     }
 
     public Customer(long customerNo, String customerCode, String customerCreateDate, String customerName,
                     String customerAddress, String customerDateOfBirth, String customerTel, String customerEmail,
-                    String customerDeliveryAddress) {
+                    String customerDeliveryAddress, CustomerType customerType) {
         this.customerNo = customerNo;
         this.customerCode = customerCode;
         this.customerCreateDate = customerCreateDate;
@@ -32,6 +35,15 @@ public class Customer {
         this.customerTel = customerTel;
         this.customerEmail = customerEmail;
         this.customerDeliveryAddress = customerDeliveryAddress;
+        this.customerType = customerType;
+    }
+
+    public CustomerType getCustomerType() {
+        return customerType;
+    }
+
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
     }
 
     public long getCustomerNo() {

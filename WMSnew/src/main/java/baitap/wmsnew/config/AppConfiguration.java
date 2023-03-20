@@ -1,7 +1,5 @@
 package baitap.wmsnew.config;
 
-import baitap.wmsnew.service.CustomerService;
-import baitap.wmsnew.service.CustomerServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -60,7 +58,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/templates");
+        templateResolver.setPrefix("/WEB-INF/view");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
         templateResolver.setCharacterEncoding("UTF-8");
@@ -108,7 +106,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
     public DriverManagerDataSource getDataSource() {
         DriverManagerDataSource datasource = new DriverManagerDataSource();
         datasource.setDriverClassName("com.mysql.jdbc.Driver");
-        datasource.setUrl("jdbc:mysql://localhost:3306/customer?useSSL=false&useUnicode=true&characterEncoding=utf8");
+        datasource.setUrl("jdbc:mysql://localhost:3306/wms?useSSL=false&useUnicode=true&characterEncoding=utf8");
         datasource.setUsername("root");
         datasource.setPassword("123456789");
         return datasource;

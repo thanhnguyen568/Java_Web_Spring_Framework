@@ -1,11 +1,10 @@
 package baitap.wmsnew.service;
 
 import baitap.wmsnew.entity.Customer;
-import org.springframework.stereotype.Service;
+import baitap.wmsnew.entity.CustomerType;
 
 import java.util.List;
 
-@Service
 public interface CustomerService {
     List<Customer> findAll();
 
@@ -17,6 +16,6 @@ public interface CustomerService {
 
     void remove(long customerNo);
 
-    List<Customer> findByName(String customerName);
+    List<Customer> findAllByCustomerType(CustomerType customerType);
 
 }
