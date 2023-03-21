@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,18 @@ public class CustomerController {
 //        return "/customer/list";
 //    }
 
+    /**
+     * Pageable
+     */
+    @GetMapping("")
+    public String findAll(@PageableDefault(value = 5) Pageable pageable, Model model) {
+        model.addAttribute("customers", customerService.findAll(pageable));
+        return "/customer/list";
+    }
+
+    /**
+     * Create
+     */
     @GetMapping("/create-customer")
     public String showFormCreate(Model model) {
         model.addAttribute("customer", new Customer());
@@ -43,6 +56,9 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
+    /**
+     * Update
+     */
     @GetMapping("/update-customer")
     public String showFormUpdate(@RequestParam Long customerNo, Model model) {
         model.addAttribute("customer", customerService.findByNo(customerNo));
@@ -52,14 +68,17 @@ public class CustomerController {
     }
 
     @PostMapping("/updated")
-    public String update(Customer customer, RedirectAttributes redirect) {
+    public String updated(Customer customer, RedirectAttributes redirect) {
         customerService.update(customer);
         redirect.addFlashAttribute("message", "update successfully!");
         return "redirect:/customers";
     }
 
+    /**
+     * Delete
+     */
     @PostMapping("/deleted")
-    public String delete(@RequestParam("checkbox") long[] checkbox, Model model, RedirectAttributes redirect) {
+    public String deleted(@RequestParam("checkbox") long[] checkbox, Model model, RedirectAttributes redirect) {
         for (long no : checkbox) {
             customerService.remove(no);
             redirect.addFlashAttribute("message", "Removed successfully!");
@@ -67,23 +86,9 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
-    // Pageable phân trang
-    @GetMapping("")
-    public String display(
-        @RequestParam(name = "page", required = false, defaultValue = "1") int page,
-        @RequestParam(name = "size", required = false, defaultValue = "3") int size,
-        @RequestParam(name = "sort", required = false, defaultValue = "ASC") String sort,
-        Model model) {
-            Sort order = null;
-            if (sort.equals("ASC")) {
-                order = Sort.by("customerName").ascending();
-            } else if (sort.equals("DESC")) {
-                order = Sort.by("customerName").descending();
-            }
-
-            Pageable pageable = PageRequest.of(page - 1, size, order);
-        model.addAttribute("customers", customerService.findAll(pageable));
-        return "/customer/list";
+    @GetMapping("search")
+    public String search(@RequestParam("search") String input, Model model){
+        model.addAttribute("customers", customerService.search(input));
+        return "redirect:/customers";
     }
-
 }

@@ -19,4 +19,7 @@ public interface CustomerService {
     void remove(long customerNo);
 
     Page<Customer> findAll(Pageable pageable);
+
+    List<Customer> search(String search);
+
 }

@@ -57,4 +57,9 @@ public class CustomerServiceImpl implements CustomerService {
         return repository.findAll(pageable);
     }
 
+    @Override
+    public List<Customer> search(String search) {
+        return repository.findCustomerNameOrCustomerAddress(search);
+    }
+
 }

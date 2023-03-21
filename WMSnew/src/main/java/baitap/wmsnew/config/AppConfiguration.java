@@ -32,10 +32,10 @@ import javax.persistence.EntityManagerFactory;
 import java.util.Properties;
 
 @Configuration
+@ComponentScan("baitap.wmsnew")
 @EnableWebMvc
 @EnableTransactionManagement
 @EnableJpaRepositories("baitap.wmsnew.repository")
-@ComponentScan("baitap.wmsnew")
 @EnableSpringDataWebSupport
 public class AppConfiguration extends WebMvcConfigurerAdapter implements ApplicationContextAware {
     private ApplicationContext applicationContext;
