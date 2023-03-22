@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/customer/layout :: head">
+</head>
+<body>
+<h3>Management</h3>
+
+<div class="container-fluid" id="form">
+    <form th:action="@{/customers/created}" th:object="${customer}" method="post" novalidate="novalidate">
+        <h3>ADD NEW</h3>
+
+        <div>
+            <label>customerCode</label>
+            <input type="text" th:field="*{customerCode}"/>
+        </div>
+        <div>
+            <label>customerCreateDate</label>
+            <input type="text" th:field="*{customerCreateDate}"/>
+        </div>
+        <div>
+            <label>customerName</label>
+            <input type="text" th:field="*{customerName}"/>
+        </div>
+        <div>
+            <label>customerDateOfBirth</label>
+            <input type="text" th:field="*{customerDateOfBirth}"/>
+        </div>
+        <div>
+            <label>customerAddress</label>
+            <input type="text" th:field="*{customerAddress}"/>
+        </div>
+        <div>
+            <label>customerTel</label>
+            <input type="text" th:field="*{customerTel}"/>
+        </div>
+        <div>
+            <label>customerEmail</label>
+            <input type="text" th:field="*{customerEmail}"/>
+        </div>
+        <div>
+            <label>customerDeliveryAddress</label>
+            <input type="text" th:field="*{customerDeliveryAddress}"/>
+        </div>
+        <div>
+            <label>customerType</label>
+            <select th:field="*{customerType}">
+                <option th:each="c : ${types}"
+                        th:text="${c.typeName}"
+                        th:value="${c.typeNo}"></option>
+            </select>
+        </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+
+<footer th:replace="/customer/layout :: footer"></footer>
+</body>
+</html>
