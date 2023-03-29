@@ -3,7 +3,7 @@
 <head th:replace="/customer/layout :: head">
 </head>
 <body>
-<head th:replace="/customer/layout :: navbar">
+<nav th:replace="/customer/layout :: navbar"></nav>
 
     <div class="container-fluid">
         <h3>Management</h3>
@@ -14,7 +14,7 @@
         </div>
 
         <!-- Table -->
-        <form th:action="@{/customers/deleted}" method="post">
+        <form th:action="@{/customers/delete}" method="post">
             <div class="form-group">
                 <!-- Create -->
                 <a th:href="@{/customers/create}" class="btn btn-primary btn-custom">
@@ -55,7 +55,7 @@
                         <td th:text="*{customerDeliveryAddress}"></td>
                         <td th:text="*{type.typeName}"></td>
                         <td>
-                            <a th:href="@{/customers/update-customer(customerNo=*{customerNo})}">
+                            <a th:href="@{/customers/update(customerNo=*{customerNo})}">
                                 <button type="button" class="btn btn-warning text-light">Update</button>
                             </a>
                         </td>
@@ -64,12 +64,6 @@
                 </table>
 
                 <!-- Paging -->
-                <div>
-                    <a th:if="${customers.hasPrevious()}"
-                       th:href="@{'/customers'(page=${customers.number})}">Previous</a>
-                    <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
-                    <a th:if="${customers.hasNext()}" th:href="@{'/customers'(page=${customers.number + 2})}">Next</a>
-                </div>
 
                 <!-- Modal -->
                 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"

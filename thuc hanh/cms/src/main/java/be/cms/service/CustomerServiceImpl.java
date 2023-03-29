@@ -46,7 +46,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> search(String search) {
-        return null;
+    public List<Customer> findAllBySearch(String customerName, String customerAddress, String customerTel) {
+        return repository.findAllByCustomerNameContainingOrCustomerAddressContainingOrCustomerTelContaining(customerName, customerAddress, customerTel);
     }
+
 }

@@ -37,6 +37,16 @@ public class CustomerController {
         Sort sort = Sort.by("customerName").ascending();
         Page<Customer> customers = customerService.findAllWithPaging(PageRequest.of(currentPage - 1, pageSize, sort));
         model.addAttribute("customers", customers);
+        return "/customer/listPaging";
+    }
+
+    /**
+     * Search
+     */
+    @GetMapping("search")
+    public String search(@RequestParam("search") String input, Model model) {
+        model.addAttribute("search", input);
+        model.addAttribute("customers", customerService.findAllBySearch(input, input, input));
         return "/customer/list";
     }
 
@@ -95,12 +105,4 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
-    /**
-     * Search
-     */
-    @GetMapping("search")
-    public String search(@RequestParam("search") String input, Model model) {
-        model.addAttribute("customers", customerService.search(input));
-        return "redirect:/customers";
-    }
 }

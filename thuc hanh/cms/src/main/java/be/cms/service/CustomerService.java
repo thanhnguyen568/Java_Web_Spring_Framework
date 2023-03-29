@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-public interface CustomerService{
+public interface CustomerService {
     List<Customer> findAll();
 
     Customer findByNo(Long customerNo);
@@ -14,7 +14,8 @@ public interface CustomerService{
     void save(Customer customer);
 
     void remove(Long customerNo);
+
     Page<Customer> findAllWithPaging(Pageable pageable);
 
-    List<Customer> search(String search);
+    List<Customer> findAllBySearch(String customerName, String customerAddress, String customerTel);
 }
