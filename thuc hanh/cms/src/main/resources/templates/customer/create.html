@@ -3,8 +3,9 @@
 <head th:replace="/customer/layout :: head">
 </head>
 <body>
+<nav th:replace="/customer/layout :: navbar"></nav>
 
-<div class="container" id="form">
+<div class="container card" id="form" style="padding: 20px; margin-top: 20px">
     <form th:action="@{/customers/create}" th:object="${customer}" method="post" novalidate="novalidate"
           id="form-register">
         <h3>ADD NEW</h3>

@@ -56,7 +56,10 @@
                         <td th:text="*{type.typeName}"></td>
                         <td>
                             <a th:href="@{/customers/update(customerNo=*{customerNo})}">
-                                <button type="button" class="btn btn-warning text-light">Update</button>
+                                <button type="button" class="btn btn-danger text-light">Update</button>
+                            </a>
+                            <a th:href="@{/customers/delete(customerNo=*{customerNo})}">
+                                <button type="button" class="btn btn-warning text-light">Delete</button>
                             </a>
                         </td>
                     </tr>

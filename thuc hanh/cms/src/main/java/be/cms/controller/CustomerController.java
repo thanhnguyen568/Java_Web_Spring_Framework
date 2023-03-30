@@ -105,4 +105,11 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
+    @GetMapping("/delete")
+    public String deleted(@RequestParam Long customerNo, Model model, RedirectAttributes redirect){
+        customerService.remove(customerNo);
+        redirect.addFlashAttribute("message", "Removed successfully!");
+        return "redirect:/customers";
+
+    }
 }

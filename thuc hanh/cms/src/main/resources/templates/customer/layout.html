@@ -31,7 +31,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-<!--            <a class="navbar-brand" th:href="@{/}"><img th:src="@{/img/favicon.png}" th:width="50px" alt=""></a>-->
+            <a class="navbar-brand" th:href="@{/}"><img th:src="@{/img/favicon.png}" th:width="50px" alt=""></a>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
@@ -44,7 +44,6 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a th:href="@{/customers}">Customer List</a></li>
-                        <li><a th:href="@{/#}">Add</a></li>
                     </ul>
                 </li>
             </ul>
@@ -53,7 +52,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search" name="search"/>
                         <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-default btn-primary" type="submit">Search</i></button>
                         </div>
                     </div>
                 </form>

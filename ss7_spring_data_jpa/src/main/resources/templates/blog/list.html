@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/blog/layout :: head">
+</head>
+<body>
+<div class="container-fluid">
+  <h3>Management</h3>
+
+  <!-- Message -->
+  <div th:if="${message}" class="notify">
+    <span th:text="${message}" style="color: brown"></span>
+  </div>
+
+  <!-- Create -->
+  <a th:href="@{/blogs/create-blog}" class="text-light">
+    <button type="button" class="btn btn-success text-light">New</button>
+  </a>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modelId">Delete</button>
+
+  <!-- Search -->
+  <form th:action="@{/blogs/search}">
+    Search:
+    <input name="search" type="text"/>
+    <button type="submit" value="Search" class="btn btn-danger">Search</button>
+  </form>
+
+  <!-- Table -->
+  <form th:action="@{/blogs/deleted}" method="post">
+    <div class="form-group">
+      <table id="customers">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody th:if="${blogs}">
+        <tr th:each="row,rowStat : ${blogs}" th:object="${row}">
+          <td><input type="checkbox" th:name="checkbox" th:value="*{blogNo}"></td>
+          </td>
+          <td th:text="*{title}"></td>
+          <td th:text="*{description}"></td>
+          <td th:text="*{type.typeName}"></td>
+          <td>
+            <a th:href="@{/blogs/update-blog(blogNo=*{blogNo})}">
+              <button type="button" class="btn btn-warning text-light">Update</button>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <!-- Paging -->
+      <div>
+        <a th:if="${blogs.hasPrevious()}"
+           th:href="@{'/blogs'(page=${blogs.number - 1})}">Previous</a>
+        <span th:text="${blogs.number + 1}"></span>/<span th:text="${blogs.totalPages}"></span>
+        <a th:if="${blogs.hasNext()}" th:href="@{'/blogs'(page=${blogs.number + 1})}">Next</a>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Confirm Delete</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure confirm delete?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <footer th:replace="/blog/layout :: footer"></footer>
+</div>
+</body>
+</html>

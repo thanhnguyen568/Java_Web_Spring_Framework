@@ -3,62 +3,71 @@
 <head th:replace="/customer/layout :: head">
 </head>
 <body>
-<h3>Management</h3>
+<nav th:replace="/customer/layout :: navbar"></nav>
 
-<div class="container-fluid" id="form">
-    <form th:action="@{/customers/create}" th:object="${customer}" method="post" novalidate="novalidate" id="form-register">
-        <h3>UPDATE</h3>
+<div class="container card" id="form" style="padding: 20px; margin-top: 20px">
+    <form th:action="@{/customers/create}" th:object="${customer}" method="post" novalidate="novalidate"
+          id="form-register">
+        <h3>ADD NEW</h3>
 
-        <div>
-            <label>customerCode</label>
-            <input type="text" th:field="*{customerCode}"/>
+        <label>customerCode <span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{customerCode}"/>
             <span th:if="${#fields.hasErrors('customerCode')}" th:errors="*{customerCode}"></span>
         </div>
-        <div>
-            <label>customerCreateDate</label>
-            <input type="date" th:field="*{customerCreateDate}"/>
-            <span th:if="${#fields.hasErrors('customerCreateDate')}" th:errors="*{customerCreateDate}"></span>
 
-        </div>
+        <label>customerCreateDate<span style="color: red;"> *</span></label>
         <div class="form-group">
-            <label>customerName</label>
-            <input type="text" th:field="*{customerName}"/>
+            <input type="date" class="form-control" th:field="*{customerCreateDate}"/>
+            <span th:if="${#fields.hasErrors('customerCreateDate')}" th:errors="*{customerCreateDate}"></span>
+        </div>
+
+        <label>customerName<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{customerName}"/>
             <span th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></span>
         </div>
-        <div>
-            <label>customerDateOfBirth</label>
-            <input type="date" th:field="*{customerDateOfBirth}"/>
+
+        <label>customerDateOfBirth<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="date" class="form-control" th:field="*{customerDateOfBirth}"/>
             <span th:if="${#fields.hasErrors('customerDateOfBirth')}" th:errors="*{customerDateOfBirth}"></span>
         </div>
-        <div>
-            <label>customerAddress</label>
-            <input type="text" th:field="*{customerAddress}"/>
+
+        <label>customerAddress<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{customerAddress}"/>
             <span th:if="${#fields.hasErrors('customerAddress')}" th:errors="*{customerAddress}"></span>
         </div>
-        <div>
-            <label>customerTel</label>
-            <input type="text" th:field="*{customerTel}"/>
+
+        <label>customerTel<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{customerTel}"/>
             <span th:if="${#fields.hasErrors('customerTel')}" th:errors="*{customerTel}"></span>
         </div>
-        <div>
-            <label>customerEmail</label>
-            <input type="text" th:field="*{customerEmail}"/>
+
+        <label>customerEmail<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{customerEmail}"/>
             <span th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"></span>
         </div>
-        <div>
-            <label>customerDeliveryAddress</label>
-            <input type="text" th:field="*{customerDeliveryAddress}"/>
+
+        <label>customerDeliveryAddress<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{customerDeliveryAddress}"/>
             <span th:if="${#fields.hasErrors('customerDeliveryAddress')}" th:errors="*{customerDeliveryAddress}"></span>
         </div>
-        <div>
-            <label>customerType</label>
-            <select th:field="*{type}">
+
+        <label>Type<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <select th:field="*{type}" class="form-control">
                 <option th:each="t : ${types}"
                         th:text="${t.typeName}"
                         th:value="${t.typeNo}"></option>
             </select>
         </div>
-        <input type="submit" value="Save"/>
+
+        <button type="submit" class="btn btn-primary btn-custom" tabindex="12"><i class="fa fa-check" aria-hidden="true"></i> Add</button>
     </form>
 </div>
 
