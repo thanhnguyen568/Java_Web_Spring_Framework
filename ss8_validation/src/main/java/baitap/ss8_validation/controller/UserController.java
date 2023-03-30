@@ -1,6 +1,6 @@
 package baitap.ss8_validation.controller;
 
-import baitap.ss8_validation.Service.UserService;
+import baitap.ss8_validation.service.UserService;
 import baitap.ss8_validation.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package baitap.ss8_validation.Service;
+package baitap.ss8_validation.service;
 
 import baitap.ss8_validation.entity.User;
 import baitap.ss8_validation.repository.UserRepository;
