@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container card" id="form" style="padding: 20px; margin-top: 20px">
+    <form th:action="@{/users/create}" th:object="${user}" method="post" novalidate="novalidate"
+          id="form-register">
+        <h3>ADD NEW</h3>
+
+        <label>userNo <span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{userNo}"/>
+            <span th:if="${#fields.hasErrors('userNo')}" th:errors="*{userNo}"></span>
+        </div>
+
+        <label>firstName<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{firstName}"/>
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+        </div>
+
+        <label>lastName<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{lastName}"/>
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+        </div>
+
+        <label>phoneNumber<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{phoneNumber}"/>
+            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+        </div>
+
+        <label>age<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{age}"/>
+            <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+        </div>
+
+        <label>email<span style="color: red;"> *</span></label>
+        <div class="form-group">
+            <input type="text" class="form-control" th:field="*{email}"/>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-custom" tabindex="12"><i class="fa fa-check" aria-hidden="true"></i> Add</button>
+    </form>
+</div>
+
+</body>
+</html>
