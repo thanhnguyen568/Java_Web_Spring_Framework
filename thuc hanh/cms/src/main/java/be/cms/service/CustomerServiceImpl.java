@@ -47,7 +47,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> findAllBySearch(String customerName, String customerAddress, String customerTel) {
-        return repository.findAllByCustomerNameContainingOrCustomerAddressContainingOrCustomerTelContaining(customerName, customerAddress, customerTel);
+        return repository.findAllByCustomerNameContainingOrCustomerAddressContainingOrCustomerTelContaining(customerName,
+                customerAddress, customerTel);
+    }
+
+    @Override
+    public Page<Customer> searchAll(String customerName, String customerAddress, Pageable pageable) {
+        return repository.findAllByCustomerNameContainingOrCustomerAddressContaining(customerName, customerAddress, pageable);
     }
 
 }

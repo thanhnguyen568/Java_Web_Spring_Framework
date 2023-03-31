@@ -5,7 +5,7 @@
 <body>
 <nav th:replace="/customer/layout :: navbar"></nav>
 
-<div class="container card" id="form" style="padding: 20px; margin-top: 20px">
+<div class="container card" id="form" style="padding: 20px; margin-top: 20px; width: 70%">
     <form th:action="@{/customers/create}" th:object="${customer}" method="post" novalidate="novalidate"
           id="form-register">
         <h3>ADD NEW</h3>

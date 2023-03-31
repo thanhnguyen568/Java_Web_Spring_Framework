@@ -35,6 +35,7 @@ public class CustomerController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(3);
         Sort sort = Sort.by("customerName").ascending();
+
         Page<Customer> customers = customerService.findAllWithPaging(PageRequest.of(currentPage - 1, pageSize, sort));
         model.addAttribute("customers", customers);
         return "/customer/listPaging";
@@ -44,11 +45,26 @@ public class CustomerController {
      * Search
      */
     @GetMapping("search")
-    public String search(@RequestParam("search") String input, Model model) {
+    public String search(@RequestParam("page") Optional<Integer> page,
+                         @RequestParam("size") Optional<Integer> size,
+                         @RequestParam("search") String input,
+                         Model model) {
+        int currentPage = page.orElse(1);
+        int pageSize = size.orElse(3);
+        Sort sort = Sort.by("customerName").ascending();
+
         model.addAttribute("search", input);
-        model.addAttribute("customers", customerService.findAllBySearch(input, input, input));
-        return "/customer/list";
+        Page<Customer> customerPage = customerService.searchAll(input, input, PageRequest.of(currentPage - 1, pageSize, sort));
+        model.addAttribute("customers", customerPage);
+        return "/customer/listPaging";
     }
+
+//    @GetMapping("search")
+//    public String search(@RequestParam("search") String input, Model model) {
+//        model.addAttribute("search", input);
+//        model.addAttribute("customers", customerService.findAllBySearch(input, input, input));
+//        return "/customer/list";
+//    }
 
     /**
      * Create
@@ -63,7 +79,8 @@ public class CustomerController {
     }
 
     @PostMapping("/create")
-    public String created(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult, Model model, RedirectAttributes redirect) {
+    public String created(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult, Model model
+            , RedirectAttributes redirect) {
         if (bindingResult.hasErrors()) {
             // Entity 2nd
             model.addAttribute("types", typeService.findAll());
@@ -106,7 +123,7 @@ public class CustomerController {
     }
 
     @GetMapping("/delete")
-    public String deleted(@RequestParam Long customerNo, Model model, RedirectAttributes redirect){
+    public String deleted(@RequestParam Long customerNo, Model model, RedirectAttributes redirect) {
         customerService.remove(customerNo);
         redirect.addFlashAttribute("message", "Removed successfully!");
         return "redirect:/customers";
