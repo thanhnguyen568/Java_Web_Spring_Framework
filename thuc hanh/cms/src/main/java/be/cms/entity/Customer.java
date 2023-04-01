@@ -11,14 +11,14 @@ public class Customer {
     private long customerNo;
     @Pattern(regexp = "KH-\\d{4}", message = "{code}")
     private String customerCode;
-    @FutureOrPresent
+    @FutureOrPresent(message = "{futureOrPresent}")
     private Date customerCreateDate;
-    @Pattern(regexp = "\\w", message = "{name}")
+    @Pattern(regexp = "[^!@#$%^&*()_+=0-9-]*", message = "{name}")
     @Size(min = 5, max = 50)
     private String customerName;
     @NotBlank
     private String customerAddress;
-    @PastOrPresent
+    @PastOrPresent(message = "{pastOrPresent}")
     private Date customerDateOfBirth;
     @Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})\\b", message = "{tel}")
     private String customerTel;
