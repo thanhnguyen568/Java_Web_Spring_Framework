@@ -18,8 +18,9 @@ public interface CustomerService {
 
     Page<Customer> findAllWithPaging(Pageable pageable);
 
+    Page<Customer> searchAll(String customerName, String customerAddress, Pageable pageable);
+
+    Customer findByCustomerCodeContaining(String customerCode);
+
     List<Customer> findAllBySearch(String customerName, String customerAddress, String customerTel);
-
-    Page<Customer> searchAll(String customerName, String customerAddress,Pageable pageable);
-
 }

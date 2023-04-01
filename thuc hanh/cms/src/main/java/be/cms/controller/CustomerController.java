@@ -1,8 +1,10 @@
 package be.cms.controller;
 
 import be.cms.entity.Customer;
+import be.cms.entity.Type;
 import be.cms.service.CustomerService;
 import be.cms.service.TypeServiceImpl;
+import be.cms.validate.CustomerValidate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,6 +25,8 @@ public class CustomerController {
     CustomerService customerService;
     @Autowired
     TypeServiceImpl typeService;
+    @Autowired
+    CustomerValidate customerValidate;
 
     /**
      * Paging & Sorting
@@ -42,7 +46,7 @@ public class CustomerController {
     }
 
     /**
-     * Search
+     * Search & Paging
      */
     @GetMapping("search")
     public String search(@RequestParam("page") Optional<Integer> page,
@@ -51,7 +55,7 @@ public class CustomerController {
                          Model model) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(3);
-        Sort sort = Sort.by("customerName").ascending();
+        Sort sort = Sort.by("customerNo").ascending().and(Sort.by("customerCode").ascending());
 
         model.addAttribute("search", input);
         Page<Customer> customerPage = customerService.searchAll(input, input, PageRequest.of(currentPage - 1, pageSize, sort));
@@ -81,9 +85,13 @@ public class CustomerController {
     @PostMapping("/create")
     public String created(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult, Model model
             , RedirectAttributes redirect) {
+        customerValidate.validate(customer, bindingResult);
         if (bindingResult.hasErrors()) {
             // Entity 2nd
             model.addAttribute("types", typeService.findAll());
+            if (customer.getType() == null) {
+                customer.setType(new Type());
+            }
             return "/customer/create";
         }
         customerService.save(customer);

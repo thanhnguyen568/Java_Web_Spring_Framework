@@ -56,4 +56,9 @@ public class CustomerServiceImpl implements CustomerService {
         return repository.findAllByCustomerNameContainingOrCustomerAddressContaining(customerName, customerAddress, pageable);
     }
 
+    @Override
+    public Customer findByCustomerCodeContaining(String customerCode) {
+        return repository.findByCustomerCodeContaining(customerCode);
+    }
+
 }

@@ -1,38 +1,31 @@
 package be.cms.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
+import javax.validation.constraints.*;
+import java.sql.Date;
 
 @Entity
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long customerNo;
-    @NotEmpty
     @Pattern(regexp = "KH-\\d{4}", message = "{code}")
     private String customerCode;
-    @NotEmpty
-    private String customerCreateDate;
-    @NotEmpty
+    @FutureOrPresent
+    private Date customerCreateDate;
     @Pattern(regexp = "\\w", message = "{name}")
     @Size(min = 5, max = 50)
     private String customerName;
-    @NotEmpty
+    @NotBlank
     private String customerAddress;
-    @NotEmpty
-    private String customerDateOfBirth;
-    @NotEmpty
+    @PastOrPresent
+    private Date customerDateOfBirth;
+    @Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})\\b", message = "{tel}")
     private String customerTel;
-    @NotEmpty
     @Email(message = "{email}")
     private String customerEmail;
-    @NotEmpty
+    @NotBlank
     private String customerDeliveryAddress;
-
     @ManyToOne
     @JoinColumn(name = "type_no")
     private Type type;
@@ -40,8 +33,8 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(long customerNo, String customerCode, String customerCreateDate, String customerName,
-                    String customerAddress, String customerDateOfBirth, String customerTel, String customerEmail,
+    public Customer(long customerNo, String customerCode, Date customerCreateDate, String customerName,
+                    String customerAddress, Date customerDateOfBirth, String customerTel, String customerEmail,
                     String customerDeliveryAddress, Type type) {
         this.customerNo = customerNo;
         this.customerCode = customerCode;
@@ -71,11 +64,11 @@ public class Customer {
         this.customerCode = customerCode;
     }
 
-    public String getCustomerCreateDate() {
+    public Date getCustomerCreateDate() {
         return customerCreateDate;
     }
 
-    public void setCustomerCreateDate(String customerCreateDate) {
+    public void setCustomerCreateDate(Date customerCreateDate) {
         this.customerCreateDate = customerCreateDate;
     }
 
@@ -95,11 +88,11 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
-    public String getCustomerDateOfBirth() {
+    public Date getCustomerDateOfBirth() {
         return customerDateOfBirth;
     }
 
-    public void setCustomerDateOfBirth(String customerDateOfBirth) {
+    public void setCustomerDateOfBirth(Date customerDateOfBirth) {
         this.customerDateOfBirth = customerDateOfBirth;
     }
 
