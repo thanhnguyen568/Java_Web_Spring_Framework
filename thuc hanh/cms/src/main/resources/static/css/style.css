@@ -1298,6 +1298,7 @@ section.content {
 	-moz-border-radius: 2px;
 	-ms-border-radius: 2px;
     border-radius: 4px;
+    overflow: scroll;
 }
 
 .card .header {
@@ -1820,6 +1821,7 @@ input[type=checkbox], input[type=radio] {
     }
     .header .form {
         margin: 10px auto;
+        overflow: scroll;
     }
     .sidebar,
     content-box {

@@ -18,7 +18,7 @@ public interface CustomerRepository extends PagingAndSortingRepository<Customer,
     Page<Customer> findAllByCustomerNameContainingOrCustomerAddressContaining(String customerName, String customerAddress,
                                                                               Pageable pageable);
 
+    //Check duplicate code
     Customer findByCustomerCodeContaining(String customerCode);
 
-    void deleteAllByCustomerNoIn(Collection<Long> customerNo);
 }

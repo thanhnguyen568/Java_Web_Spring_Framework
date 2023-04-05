@@ -5,57 +5,59 @@
 <body>
 <nav th:replace="/customer/layout :: navbar"></nav>
 
-<div class="container card" id="form" style="padding: 20px; margin-top: 20px">
+<div class="container card" id="form" style="padding: 20px; margin-top: 20px; width: 40%">
     <form th:action="@{/customers/create}" th:object="${customer}" method="post" novalidate="novalidate"
           id="form-register">
-        <h3>ADD NEW</h3>
+        <h3>Update</h3>
+
+        <input type="hidden" class="form-control" th:field="*{customerNo}"/>
 
         <label>customerCode <span style="color: red;"> *</span></label>
         <div class="form-group">
             <input type="text" class="form-control" th:field="*{customerCode}"/>
-            <span th:if="${#fields.hasErrors('customerCode')}" th:errors="*{customerCode}"></span>
+            <span th:if="${#fields.hasErrors('customerCode')}" th:errors="*{customerCode}" style="color: red;"></span>
         </div>
 
         <label>customerCreateDate<span style="color: red;"> *</span></label>
         <div class="form-group">
             <input type="date" class="form-control" th:field="*{customerCreateDate}"/>
-            <span th:if="${#fields.hasErrors('customerCreateDate')}" th:errors="*{customerCreateDate}"></span>
+            <span th:if="${#fields.hasErrors('customerCreateDate')}" th:errors="*{customerCreateDate}" style="color: red;"></span>
         </div>
 
         <label>customerName<span style="color: red;"> *</span></label>
         <div class="form-group">
             <input type="text" class="form-control" th:field="*{customerName}"/>
-            <span th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></span>
+            <span th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" style="color: red;"></span>
         </div>
 
         <label>customerDateOfBirth<span style="color: red;"> *</span></label>
         <div class="form-group">
             <input type="date" class="form-control" th:field="*{customerDateOfBirth}"/>
-            <span th:if="${#fields.hasErrors('customerDateOfBirth')}" th:errors="*{customerDateOfBirth}"></span>
+            <span th:if="${#fields.hasErrors('customerDateOfBirth')}" th:errors="*{customerDateOfBirth}" style="color: red;"></span>
         </div>
 
         <label>customerAddress<span style="color: red;"> *</span></label>
         <div class="form-group">
             <input type="text" class="form-control" th:field="*{customerAddress}"/>
-            <span th:if="${#fields.hasErrors('customerAddress')}" th:errors="*{customerAddress}"></span>
+            <span th:if="${#fields.hasErrors('customerAddress')}" th:errors="*{customerAddress}" style="color: red;"></span>
         </div>
 
         <label>customerTel<span style="color: red;"> *</span></label>
         <div class="form-group">
             <input type="text" class="form-control" th:field="*{customerTel}"/>
-            <span th:if="${#fields.hasErrors('customerTel')}" th:errors="*{customerTel}"></span>
+            <span th:if="${#fields.hasErrors('customerTel')}" th:errors="*{customerTel}" style="color: red;"></span>
         </div>
 
         <label>customerEmail<span style="color: red;"> *</span></label>
         <div class="form-group">
             <input type="text" class="form-control" th:field="*{customerEmail}"/>
-            <span th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"></span>
+            <span th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}" style="color: red;"></span>
         </div>
 
         <label>customerDeliveryAddress<span style="color: red;"> *</span></label>
         <div class="form-group">
             <input type="text" class="form-control" th:field="*{customerDeliveryAddress}"/>
-            <span th:if="${#fields.hasErrors('customerDeliveryAddress')}" th:errors="*{customerDeliveryAddress}"></span>
+            <span th:if="${#fields.hasErrors('customerDeliveryAddress')}" th:errors="*{customerDeliveryAddress}" style="color: red;"></span>
         </div>
 
         <label>Type<span style="color: red;"> *</span></label>

@@ -38,7 +38,7 @@ public class CustomerController {
                                Model model) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(3);
-        Sort sort = Sort.by("customerName").ascending();
+        Sort sort = Sort.by("customerNo").ascending().and(Sort.by("customerCode").descending());
 
         Page<Customer> customers = customerService.findAllWithPaging(PageRequest.of(currentPage - 1, pageSize, sort));
         model.addAttribute("customers", customers);
@@ -49,7 +49,7 @@ public class CustomerController {
      * Search & Paging
      */
     @GetMapping("search")
-    public String search(@RequestParam("page") Optional<Integer> page,
+    public String searchPageSort(@RequestParam("page") Optional<Integer> page,
                          @RequestParam("size") Optional<Integer> size,
                          @RequestParam("search") String input,
                          Model model) {
@@ -58,7 +58,7 @@ public class CustomerController {
         Sort sort = Sort.by("customerNo").ascending().and(Sort.by("customerCode").ascending());
 
         model.addAttribute("search", input);
-        Page<Customer> customerPage = customerService.searchAll(input, input, PageRequest.of(currentPage - 1, pageSize, sort));
+        Page<Customer> customerPage = customerService.searchAllWithPage(input, input, PageRequest.of(currentPage - 1, pageSize, sort));
         model.addAttribute("customers", customerPage);
         return "/customer/listPaging";
     }
@@ -66,7 +66,7 @@ public class CustomerController {
 //    @GetMapping("search")
 //    public String search(@RequestParam("search") String input, Model model) {
 //        model.addAttribute("search", input);
-//        model.addAttribute("customers", customerService.findAllBySearch(input, input, input));
+//        model.addAttribute("customers", customerService.searchAll(input, input, input));
 //        return "/customer/list";
 //    }
 
@@ -83,7 +83,7 @@ public class CustomerController {
     }
 
     @PostMapping("/create")
-    public String created(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult, Model model
+    public String doCreate(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult, Model model
             , RedirectAttributes redirect) {
         customerValidate.validate(customer, bindingResult);
         if (bindingResult.hasErrors()) {
@@ -112,7 +112,7 @@ public class CustomerController {
     }
 
     @PostMapping("/update")
-    public String updated(Customer customer, RedirectAttributes redirect) {
+    public String doUpdate(Customer customer, RedirectAttributes redirect) {
         customerService.save(customer);
         redirect.addFlashAttribute("message", "update successfully!");
         return "redirect:/customers";
@@ -122,7 +122,7 @@ public class CustomerController {
      * Delete
      */
     @PostMapping("/delete")
-    public String deleted(@RequestParam("checkbox") long[] checkbox, Model model, RedirectAttributes redirect) {
+    public String doDelete(@RequestParam("checkbox") long[] checkbox, Model model, RedirectAttributes redirect) {
         for (long no : checkbox) {
             customerService.remove(no);
             redirect.addFlashAttribute("message", "Removed successfully!");
@@ -130,11 +130,11 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
-    @GetMapping("/delete")
-    public String deleted(@RequestParam Long customerNo, Model model, RedirectAttributes redirect) {
-        customerService.remove(customerNo);
-        redirect.addFlashAttribute("message", "Removed successfully!");
-        return "redirect:/customers";
-
-    }
+//    @GetMapping("/delete")
+//    public String deleted(@RequestParam Long customerNo, Model model, RedirectAttributes redirect) {
+//        customerService.remove(customerNo);
+//        redirect.addFlashAttribute("message", "Removed successfully!");
+//        return "redirect:/customers";
+//
+//    }
 }
