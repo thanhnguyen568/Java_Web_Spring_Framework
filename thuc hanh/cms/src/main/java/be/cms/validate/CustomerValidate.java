@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 @Component
 public class CustomerValidate implements Validator {
     @Autowired
@@ -25,7 +28,16 @@ public class CustomerValidate implements Validator {
 
         Customer customer = (Customer) target;
         if (service.findByCustomerCodeContaining(customer.getCustomerCode()) != null) {
-            errors.rejectValue("customerCode", "duplicateCode", new String[]{customer.getCustomerCode()},"Code bị trùng lặp");
+            errors.rejectValue("customerCode", "duplicateCode", new String[]{customer.getCustomerCode()}, "Code bị trùng lặp");
+        }
+
+        Date date = Date.valueOf(LocalDate.now());
+        try {
+            if (customer.getCustomerCreateDate().before(date)) {
+                errors.rejectValue("customerCreateDate", "futureOrPresent", new String[]{customer.getCustomerCode()}, "");
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
     }
 }

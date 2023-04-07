@@ -11,7 +11,7 @@ public class Customer {
     private long customerNo;
     @Pattern(regexp = "KH-\\d{4}", message = "{code}")
     private String customerCode;
-    @FutureOrPresent(message = "{futureOrPresent}")
+    //    @FutureOrPresent(message = "{futureOrPresent}")
     private Date customerCreateDate;
     @Pattern(regexp = "[^!@#$%^&*()_+=0-9-]*", message = "{name}")
     @Size(min = 5, max = 50)
