@@ -50,9 +50,9 @@ public class CustomerController {
      */
     @GetMapping("search")
     public String searchPageSort(@RequestParam("page") Optional<Integer> page,
-                         @RequestParam("size") Optional<Integer> size,
-                         @RequestParam("search") String input,
-                         Model model) {
+                                 @RequestParam("size") Optional<Integer> size,
+                                 @RequestParam("search") String input,
+                                 Model model) {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(3);
         Sort sort = Sort.by("customerNo").ascending().and(Sort.by("customerCode").ascending());
