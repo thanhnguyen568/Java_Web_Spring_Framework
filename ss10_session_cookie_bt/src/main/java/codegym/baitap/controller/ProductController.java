@@ -12,39 +12,35 @@ import javax.servlet.http.HttpSession;
 
 
 @Controller
-//@SessionAttributes("cart")
+@SessionAttributes("cart")
 public class ProductController {
     @Autowired
     private ProductService service;
-//
-//    @ModelAttribute("cart")
-//    public Cart setupCart() {
-//        return new Cart();
-//    }
+
+    @ModelAttribute("cart")
+    public Cart setupCart() {
+        return new Cart();
+    }
 
     @GetMapping("/shop")
     public String showShop(Model model, HttpSession session) {
-        Cart cart = (Cart) session.getAttribute("cart");
-        if(cart==null) {
-            session.setAttribute("cart", new Cart());
-        }
         model.addAttribute("products", service.findAll());
+        session.invalidate();
         return "/shop/product";
     }
 
     @GetMapping("/shop/add")
-    public String addToCart(@RequestParam("id") Long id, Model model,HttpSession session) {
-        Cart cart = (Cart) session.getAttribute("cart");
+    public String addToCart(@ModelAttribute Cart cart, @RequestParam Long id,
+                            Model model, HttpSession session) {
         Product product = service.findById(id);
         if (product == null) {
-            return "/shop/cart";
+            return "/shop/error.404";
         }
 //        if (action.equals("show")) {
 //            cart.addProduct(product);
 //            return "redirect:/shopping-cart";
 //        }
         cart.addProduct(product);
-        session.setAttribute("cart",cart);
         return "redirect:/shop";
     }
 }

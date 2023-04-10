@@ -11,6 +11,7 @@
 <table border="1">
     <tr>
         <td>#</td>
+        <td>ID</td>
         <td>Name</td>
         <td>Price</td>
         <td>Add To Cart</td>
@@ -22,7 +23,6 @@
             <td th:text="*{name}"></td>
             <td th:text="*{price}"></td>
             <td><a th:href="@{/shop/add(id=*{id})}">Add To Cart</a></td>
-<!--            <td><a th:href="@{/add/__${product.id}__(action='list')}">Add To Cart</a></td>-->
         </tr>
     </th:block>
 </table>

@@ -21,6 +21,9 @@ public class Cart {
         this.products = products;
     }
 
+    /**
+     * Check item in Cart by equal.
+     */
     private boolean checkItemInCart(Product product) {
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             if (entry.getKey().getId().equals(product.getId())) {
@@ -30,6 +33,9 @@ public class Cart {
         return false;
     }
 
+    /**
+     * Select item in Cart by equal.
+     */
     private Map.Entry<Product, Integer> selectItemInCart(Product product) {
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             if (entry.getKey().getId().equals(product.getId())) {
@@ -39,19 +45,16 @@ public class Cart {
         return null;
     }
 
+    /**
+     * check in cart, get value+1
+     */
     public void addProduct(Product product) {
-        System.err.println(product.toString());
         if (!checkItemInCart(product)) {
             products.put(product, 1);
         } else {
             Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
-            Integer newQuantity = itemEntry.getValue() + 1;
-            products.replace(itemEntry.getKey(), newQuantity);
-            products.put(product, products.get(product) + 1);
-            System.err.println(products.get(product));
-            System.out.println(product.toString());
+            products.replace(itemEntry.getKey(), itemEntry.getValue() + 1);
         }
-        System.out.println(product.toString()+"3");
     }
 
     public Integer countProductQuantity() {

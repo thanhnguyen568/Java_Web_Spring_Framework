@@ -1,8 +1,9 @@
 package codegym.baitap.entity;
 
-import javax.annotation.sql.DataSourceDefinition;
 import javax.persistence.*;
+import java.util.Objects;
 
+@Entity
 @Table(name = "product")
 public class Product {
     @Id
@@ -53,13 +54,4 @@ public class Product {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }
