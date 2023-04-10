@@ -9,23 +9,31 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long customerNo;
+
     @Pattern(regexp = "KH-\\d{4}", message = "{code}")
     private String customerCode;
-    //    @FutureOrPresent(message = "{futureOrPresent}")
+
     private Date customerCreateDate;
-    @Pattern(regexp = "[^!@#$%^&*()_+=0-9-]*", message = "{name}")
+
     @Size(min = 5, max = 50)
+    @Pattern(regexp = "[^!@#$%^&*()_+=0-9-]*", message = "{name}")
     private String customerName;
+
     @NotBlank
     private String customerAddress;
+
     @PastOrPresent(message = "{pastOrPresent}")
     private Date customerDateOfBirth;
+
     @Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})\\b", message = "{tel}")
     private String customerTel;
+
     @Email(message = "{email}")
     private String customerEmail;
+
     @NotBlank
     private String customerDeliveryAddress;
+
     @ManyToOne
     @JoinColumn(name = "type_no")
     private Type type;
