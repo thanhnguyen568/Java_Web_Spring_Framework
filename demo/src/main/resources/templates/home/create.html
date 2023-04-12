@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/home/layout :: head">
+</head>
+<body>
+<nav th:replace="/home/layout :: navbar"></nav>
+
+<div class="container card" id="form" style="padding: 20px; margin-top: 20px; width: 40%">
+  <form th:action="@{/homeStays/create}" th:object="${homeStay}" method="post" novalidate="novalidate"
+        id="form-register">
+    <h3>Add New</h3>
+    <hr>
+
+    <label>Name<span style="color: red;"> *</span></label>
+    <div class="form-group">
+      <input type="text" class="form-control" th:field="*{name}"/>
+      <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></span>
+    </div>
+
+    <label>Phone<span style="color: red;"> *</span></label>
+    <div class="form-group">
+      <input type="text" class="form-control" th:field="*{phone}"/>
+      <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"
+            style="color: red;"></span>
+    </div>
+
+    <label>Rent Date<span style="color: red;"> *</span></label>
+    <div class="form-group">
+      <input type="date" class="form-control" th:field="*{rentDate}"/>
+      <span th:if="${#fields.hasErrors('rentDate')}" th:errors="*{rentDate}"
+            style="color: red;"></span>
+    </div>
+
+    <label>Payment<span style="color: red;"> *</span></label>
+    <div class="form-group">
+      <select th:field="*{payment}" class="form-control">
+        <option th:each="t : ${payments}"
+                th:text="${t.paymentName}"
+                th:value="${t.paymentNo}"></option>
+      </select>
+    </div>
+
+    <button class="btn btn-danger btn-custom"><a th:href="@{/homeStays}" style="color: #dddddd">Back to list</a>
+    </button>
+    <button type="submit" class="btn btn-primary btn-custom" tabindex="12"><i class="fa fa-check"
+                                                                              aria-hidden="true"></i> Add
+    </button>
+  </form>
+</div>
+
+<footer th:replace="/home/layout :: footer"></footer>
+</body>
+</html>
