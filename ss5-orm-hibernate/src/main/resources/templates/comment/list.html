@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/comments/create}" th:object="${comment}" method="post" novalidate="novalidate"
+      id="form-register">
+    <img id="img-of-the-day" style="width: 200px; height: 200px">
+    <hr>
+
+    <label>Score <span style="color: red;"> *</span></label>
+    <div class="form-group">
+        <select th:field="*{score}" name="" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <span th:if="${#fields.hasErrors('score')}" th:errors="*{score}" style="color: red;"></span>
+    </div>
+
+    <label>Author<span style="color: red;"> *</span></label>
+    <div class="form-group">
+        <input type="text" class="form-control" th:field="*{author}"/>
+        <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}"
+              style="color: red;"></span>
+    </div>
+
+    <label>Feedback<span style="color: red;"> *</span></label>
+    <div class="form-group">
+        <input type="text" class="form-control" th:field="*{feedback}"/>
+        <span th:if="${#fields.hasErrors('feedback')}" th:errors="*{feedback}" style="color: red;"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="date" th:field="*{date}" id="date-form" readonly/>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-custom" tabindex="12"><i class="fa fa-check"
+                                                                              aria-hidden="true"></i> Comment
+    </button>
+</form>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Score</th>
+        <th>Author</th>
+        <th>Feedback</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody th:if="${comments}">
+    <tr th:each="row,rowStat : ${comments}" th:object="${row}">
+        <td th:text="*{score}"></td>
+        <td th:text="*{author}"></td>
+        <td th:text="*{feedback}"></td>
+        <td th:text="*{date}" aria-readonly="true"></td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    let query = 'https://api.nasa.gov/planetary/apod?api_key=Re3WTGvNg8ej9udjpdxZma7bzcQPRJpEz9T9SWW1';
+    let request = new XMLHttpRequest();
+    request.open('GET', query);
+    request.onload = function () {
+        if (request.status === 200) {
+            let response = JSON.parse(request.responseText);
+            document.getElementById('img-of-the-day').setAttribute('src', response.url);
+            document.getElementById('date-form').valueAsDate = new Date();
+
+        }
+    };
+    request.send();
+</script>
+</body>
+</html>
