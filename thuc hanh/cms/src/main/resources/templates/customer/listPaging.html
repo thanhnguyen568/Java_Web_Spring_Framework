@@ -46,8 +46,7 @@
                 <tbody th:if="${customers}">
                 <tr th:each="row,rowStat : ${customers}" th:object="${row}">
                     <td><input type="checkbox" th:name="checkbox" th:value="*{customerNo}"></td>
-                    <td><a th:href="@{/customers/view(customerCode=*{customerCode})}" th:text="*{customerCode}"></a>
-                    </td>
+                    <td><a th:href="@{/customers/view(customerCode=*{customerCode})}" th:text="*{customerCode}"></a></td>
                     <td th:text="*{customerCreateDate}"></td>
                     <td th:text="*{customerName}"></td>
                     <td th:text="*{customerAddress}"></td>
@@ -106,7 +105,7 @@
         function selects() {
             let row = document.getElementsByName('checkbox');
             let check = document.getElementById("check")
-            if (check.checked === true){
+            if (check.checked === true) {
                 for (let i = 0; i < row.length; i++) {
                     if (row[i].type === 'checkbox')
                         row[i].checked = true;
