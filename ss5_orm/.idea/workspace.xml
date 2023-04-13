@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65bf6beb-6aa5-402f-bef8-189dba9b9520" name="Changes" comment="" />
+    <list default="true" id="65bf6beb-6aa5-402f-bef8-189dba9b9520" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/java/baitap/ss8validatemusic/Ss8ValidateMusicApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/java/baitap/ss8validatemusic/controller/MySongController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/java/baitap/ss8validatemusic/entity/MySong.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/java/baitap/ss8validatemusic/repository/MySongRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/java/baitap/ss8validatemusic/repository/MySongRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/java/baitap/ss8validatemusic/service/MySongService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/java/baitap/ss8validatemusic/service/MySongServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/resources/song/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/resources/song/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/resources/song/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/main/resources/song/update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss8-validate-music/src/test/java/baitap/ss8validatemusic/Ss8ValidateMusicApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,11 +81,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Thanh Nguyen/Downloads/demoSpringGradle",
+    "last_opened_file_path": "D:/CodeGym/Module4_Java_Web_Spring_Framework/ss5_orm",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "8bad514e874ac5f8402882851cb61001",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -179,6 +199,7 @@
       <workItem from="1678900003651" duration="13000" />
       <workItem from="1678964446913" duration="625000" />
       <workItem from="1678969634130" duration="5922000" />
+      <workItem from="1681402804099" duration="1912000" />
     </task>
     <servers />
   </component>

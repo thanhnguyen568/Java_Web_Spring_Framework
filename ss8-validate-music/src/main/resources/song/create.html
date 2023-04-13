@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/song/layout :: head">
+</head>
+<body>
+<div id="form">
+  <form th:action="@{/songs/created}" th:object="${mySong}" method="post" novalidate="novalidate">
+    <h2>CREATE</h2>
+    <div>
+      <label>songNo</label>
+      <input type="text" th:field="*{songNo}"/>
+    </div>
+    <div>
+      <label>songName</label>
+      <input type="text" th:field="*{songName}"/>
+    </div>
+    <div>
+      <label>songSinger</label>
+      <input type="text" th:field="*{songSinger}"/>
+    </div>
+    <div>
+      <label>songType</label>
+      <input type="text" th:field="*{songType}"/>
+    </div>
+    <div>
+      <label>songLink</label>
+      <input type="text" th:field="*{songLink}"/>
+    </div>
+    <input type="submit" value="Save"/>
+  </form>
+</div>
+<footer th:replace="/song/layout :: footer"></footer>
+</body>
+</html>
