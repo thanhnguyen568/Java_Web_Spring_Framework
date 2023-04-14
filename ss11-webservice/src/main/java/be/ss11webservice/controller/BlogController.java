@@ -37,7 +37,7 @@ public class BlogController {
     }
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody Blog blog) {
+    public ResponseEntity<String> create(@RequestBody Blog[] blog) {
 //        Student student = new Student();
 //        student.setId(studentForm.getId());
 //        student.setName(studentForm.getName());
@@ -46,7 +46,9 @@ public class BlogController {
 //        student.setSex(studentForm.isSex());
 //        student.setPhoneNumber(studentForm.getPhoneNumber());
 //        student.setClassName(classNameService.findById(studentForm.getClassId()));
-        blogService.save(blog);
+        for (Blog b : blog) {
+            blogService.save(b);
+        }
         return new ResponseEntity<>("Success", HttpStatus.OK);
     }
 
