@@ -45,8 +45,12 @@
                 </thead>
                 <tbody th:if="${customers}">
                 <tr th:each="row,rowStat : ${customers}" th:object="${row}">
-                    <td><input type="checkbox" th:name="checkbox" th:value="*{customerNo}"></td>
-                    <td><a th:href="@{/customers/view(customerCode=*{customerCode})}" th:text="*{customerCode}"></a></td>
+                    <td>
+                        <input type="checkbox" th:name="checkbox" th:value="*{customerNo}">
+                    </td>
+                    <td>
+                        <a th:href="@{/customers/view(customerCode=*{customerCode})}" th:text="*{customerCode}"></a>
+                    </td>
                     <td th:text="*{customerCreateDate}"></td>
                     <td th:text="*{customerName}"></td>
                     <td th:text="*{customerAddress}"></td>
