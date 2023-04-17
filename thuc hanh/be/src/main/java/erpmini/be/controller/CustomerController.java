@@ -1,12 +1,10 @@
-package be.cms.controller;
+package erpmini.be.controller;
 
-import be.cms.entity.Customer;
-import be.cms.entity.Type;
-import be.cms.service.CustomerService;
-import be.cms.service.CustomerServiceImpl;
-import be.cms.service.TypeService;
-import be.cms.service.TypeServiceImpl;
-import be.cms.validate.CustomerValidate;
+import erpmini.be.entity.Customer;
+import erpmini.be.entity.TypeCustomer;
+import erpmini.be.service.CustomerService;
+import erpmini.be.service.TypeCustomerService;
+import erpmini.be.validate.CustomerValidate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,14 +19,14 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/customers")
+@RequestMapping("customers")
 public class CustomerController {
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
     @Autowired
-    TypeService typeService;
+    private TypeCustomerService typeService;
     @Autowired
-    CustomerValidate customerValidate;
+    private CustomerValidate customerValidate;
 
     /**
      * Paging & Sorting
@@ -91,8 +89,8 @@ public class CustomerController {
         if (bindingResult.hasErrors()) {
             // Entity 2nd
             model.addAttribute("types", typeService.findAll());
-            if (customer.getType() == null) {
-                customer.setType(new Type());
+            if (customer.getTypeCustomer() == null) {
+                customer.setTypeCustomer(new TypeCustomer());
             }
             return "/customer/create";
         }
