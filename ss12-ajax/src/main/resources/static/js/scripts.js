@@ -27,27 +27,35 @@ function search() {
 }
 
 function addLine() {
-    $.ajax({
-        url: "http://localhost:8080/api/blogs",
-        data: {
-            search: search,
-        },
-        type: "post",
-        dataType: "json",
-        success: function (res) {
-            let result = "";
-            for (let i = 0; i < res.length; i++) {
-                result +=
+                let result =
                     `
-                    <tr>
-                        <td>${res[i].blogNo}</td>
-                        <td>${res[i].title}</td>
-                        <td>${res[i].description}</td>
-                        <td>${res[i].type.typeName}</td>
-                    </tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
                     `
-            }
-            $("#result").html(result);
-        }
-    })
+
+    // $.ajax({
+    //     url: "http://localhost:8080/api/blogs",
+    //     data: {
+    //         search: search,
+    //     },
+    //     type: "post",
+    //     dataType: "json",
+    //     success: function (res) {
+    //         let result = "";
+    //         for (let i = 0; i < res.length; i++) {
+    //             result +=
+    //                 `
+    //                 <tr>
+    //                     <td>${res[i].blogNo}</td>
+    //                     <td>${res[i].title}</td>
+    //                     <td>${res[i].description}</td>
+    //                     <td>${res[i].type.typeName}</td>
+    //                 </tr>
+    //                 `
+    //         }
+    //         $("#result").html(result);
+    //     }
+    // })
 }

@@ -26,19 +26,18 @@ public class BlogController {
         return "/blog/list";
     }
 
-    @GetMapping("/paging")
-    public String listPageSort(@RequestParam("page") Optional<Integer> page,
-                               @RequestParam("size") Optional<Integer> size,
-//                               @RequestParam("sort") Optional<String> sort,
-                               Model model) {
-        int currentPage = page.orElse(1);
-        int pageSize = size.orElse(1);
-        Sort sort = Sort.by("blogNo").ascending().and(Sort.by("title").descending());
-
-        Page<Blog> blogs = blogService.findAllWithPaging(PageRequest.of(currentPage - 1, pageSize, sort));
-        model.addAttribute("blogs", blogs);
-        return "/blog/listPaging";
-    }
-
+//    @GetMapping("")
+//    public String listPageSort(@RequestParam("page") Optional<Integer> page,
+//                               @RequestParam("size") Optional<Integer> size,
+////                               @RequestParam("sort") Optional<String> sort,
+//                               Model model) {
+//        int currentPage = page.orElse(1);
+//        int pageSize = size.orElse(1);
+//        Sort sort = Sort.by("blogNo").ascending().and(Sort.by("title").descending());
+//
+//        Page<Blog> blogs = blogService.findAllWithPaging(PageRequest.of(currentPage - 1, pageSize, sort));
+//        model.addAttribute("blogs", blogs);
+//        return "/blog/listPaging";
+//    }
 
 }
