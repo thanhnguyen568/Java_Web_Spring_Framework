@@ -27,13 +27,17 @@ public class CustomerValidate implements Validator {
         }
 
         Customer customer = (Customer) target;
-        if (service.findByCustomerCodeContaining(customer.getCustomerCode()) != null) {
-            errors.rejectValue("customerCode", "duplicateCode", new String[]{customer.getCustomerCode()}, "Code bị trùng lặp");
-        }
+//        try {
+//            if (service.findByCustomerCodeContaining(customer.getCustomerCode()) != null) {
+//                errors.rejectValue("customerCode", "duplicateCode", new String[]{customer.getCustomerCode()}, "Code bị trùng lặp");
+//            }
+//        } catch (NullPointerException e) {
+//            e.printStackTrace();
+//        }
 
         Date date = Date.valueOf(LocalDate.now());
         try {
-            if (customer.getCustomerCreateDate().before(date)) {
+            if (!customer.getCustomerCreateDate().before(date)) {
                 errors.rejectValue("customerCreateDate", "futureOrPresent", new String[]{customer.getCustomerCode()}, "");
             }
         } catch (NullPointerException e) {

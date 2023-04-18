@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="search" class="search">
+<button onclick="search()">search</button>
+<hr>
+<table class="table">
+    <thead>
+    <tr>
+        <th>blogNo</th>
+        <th>title</th>
+        <th>description</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowstat : ${blogs}" th:object="${row}">
+        <td th:text="*{blogNo}"></td>
+        <td th:text="*{title}"></td>
+        <td th:text="*{description}"></td>
+        <td th:text="*{type.typeName}"></td>
+    </tr>
+    </tbody>
+</table>
+<!-- Paging -->
+<div>
+    <a th:if="${blogs.hasPrevious()}"
+       th:href="@{'/blogs'(page=${blogs.number})}">Previous</a>
+    <span th:text="${blogs.number + 1}"></span>/<span th:text="${blogs.totalPages}"></span>
+    <a th:if="${blogs.hasNext()}"
+       th:href="@{'/blogs'(page=${blogs.number + 2})}">Next</a>
+</div>
+<script th:src="@{js/jquery-3.6.4.js}"></script>
+<script src="/js/scripts.js"></script>
+</body>
+</html>
