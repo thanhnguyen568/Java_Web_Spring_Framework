@@ -14,16 +14,11 @@ public class Role {
     public Role() {
     }
 
-    public Role(long roleId, String roleName) {
-        RoleId = roleId;
-        this.roleName = roleName;
-    }
-
-    public long getRoleId() {
+    public Long getRoleId() {
         return RoleId;
     }
 
-    public void setRoleId(long roleId) {
+    public void setRoleId(Long roleId) {
         RoleId = roleId;
     }
 

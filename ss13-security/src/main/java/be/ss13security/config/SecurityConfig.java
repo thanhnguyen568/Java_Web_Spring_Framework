@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // Đăng ký những pattern không cần đăng nhập
-        http.authorizeRequests().antMatchers("/index", "/user/**", "/login").permitAll();
+        http.authorizeRequests().antMatchers("/", "/*/*").permitAll();
         // Đăng ký những pattern phải login với quyền user hoặc admin mới được truy cập
         http.authorizeRequests().antMatchers("/role/**").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')");
         // Đăng ký những pattern phải login với quyền admin mới được truy cập

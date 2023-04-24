@@ -7,26 +7,20 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long no;
     @ManyToOne
-    @Column(name = "user_id")
+    @JoinColumn(name = "user_id")
     private UserApp userApp;
     @ManyToOne
-    @Column(name = "role_id")
+    @JoinColumn(name = "role_id")
     private Role role;
 
     public UserRole() {
     }
 
-    public UserRole(long no, UserApp userApp, Role role) {
-        this.no = no;
-        this.userApp = userApp;
-        this.role = role;
-    }
-
-    public long getNo() {
+    public Long getNo() {
         return no;
     }
 
-    public void setNo(long no) {
+    public void setNo(Long no) {
         this.no = no;
     }
 

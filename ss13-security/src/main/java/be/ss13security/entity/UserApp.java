@@ -5,7 +5,8 @@ import javax.persistence.*;
 @Entity
 public class UserApp {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long userId;
     @Column(name = "user_name", nullable = false)
@@ -16,17 +17,11 @@ public class UserApp {
     public UserApp() {
     }
 
-    public UserApp(long userId, String userName, String password) {
-        this.userId = userId;
-        this.userName = userName;
-        this.password = password;
-    }
-
-    public long getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
