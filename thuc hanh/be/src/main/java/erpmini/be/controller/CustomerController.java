@@ -54,7 +54,7 @@ public class CustomerController {
                                  @RequestParam("search") String input,
                                  Model model) {
         int currentPage = page.orElse(1);
-        int pageSize = size.orElse(3);
+        int pageSize = size.orElse(2);
         Sort sort = Sort.by("customerNo").ascending().and(Sort.by("customerCode").ascending());
 
         model.addAttribute("search", input);

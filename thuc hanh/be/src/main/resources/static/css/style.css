@@ -4,7 +4,7 @@
 }
 
 body {
-    font-family: Arial;
+    font-family: he;
     padding: 10px;
     background: #f1f1f1;
 }
@@ -23,7 +23,7 @@ body {
 /* Style the top navigation bar */
 .topnav {
     overflow: hidden;
-    background-color: black;
+    background-color: #16a085;
     position: sticky;
 
 }
@@ -103,4 +103,12 @@ body {
         float: none;
         width: 100%;
     }
+}
+
+.item {
+    background-color: #27ae60;
+}
+.item h3{
+    align-items: center;
+    justify-content: center;
 }

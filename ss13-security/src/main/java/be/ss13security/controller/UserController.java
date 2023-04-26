@@ -1,6 +1,7 @@
-package be.ss13security.config;
+package be.ss13security.controller;
 
 import be.ss13security.entity.UserApp;
+import be.ss13security.entity.UserRole;
 import be.ss13security.repository.RoleRepository;
 import be.ss13security.repository.UserAppRepository;
 import be.ss13security.repository.UserRoleRepository;
@@ -36,5 +37,19 @@ public class UserController {
         userApp.setPassword(encoder.encode(userApp.getPassword()));
         userAppRepository.save(userApp);
         return "/userApp/create";
+    }
+
+    @GetMapping("/addRole")
+    public String showAddRole(Model model) {
+        model.addAttribute("userRole", new UserRole());
+        model.addAttribute("users", userAppRepository.findAll());
+        model.addAttribute("roles", roleRepository.findAll());
+        return "/userApp/addRole";
+    }
+
+    @PostMapping("/addRole")
+    public String doAddRole(@ModelAttribute("userRole") UserRole userRole) {
+        userRoleRepository.save(userRole);
+        return "redirect:/userApps/addRole";
     }
 }

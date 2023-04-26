@@ -18,18 +18,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         // load userdetailservice do mình xây dựng để spring auth
-        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());    }
+        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // Đăng ký những pattern không cần đăng nhập
-        http.authorizeRequests().antMatchers("/", "/*/*").permitAll();
-        // Đăng ký những pattern phải login với quyền user hoặc admin mới được truy cập
-        http.authorizeRequests().antMatchers("/role/**").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')");
+        http.authorizeRequests().antMatchers("/", "/login").permitAll();
+
         // Đăng ký những pattern phải login với quyền admin mới được truy cập
-        http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/userApps/addRole").hasRole("ADMIN");
+
+        // Đăng ký những pattern phải login với quyền user hoặc admin mới được truy cập
+        http.authorizeRequests().antMatchers("/userApps/create").
+                access("hasAnyRole('ROLE_ADMIN','ROLE_SALE','ROLE_PURCHASE')");
+
         // Trả về url nào khi user không có quyền truy cập
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/deny");
+
         // Trường hợp user chưa đăng nhập truy cập những pattern cần quyền thì phải chuyển sang trang login
-        http.authorizeRequests().and().formLogin();    }
+        http.authorizeRequests().and().formLogin();
+    }
 }

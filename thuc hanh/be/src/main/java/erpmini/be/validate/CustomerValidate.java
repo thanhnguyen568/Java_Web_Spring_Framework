@@ -37,7 +37,7 @@ public class CustomerValidate implements Validator {
 
         Date date = Date.valueOf(LocalDate.now());
         try {
-            if (!customer.getCustomerCreateDate().before(date)) {
+            if (customer.getCustomerCreateDate().before(date)) {
                 errors.rejectValue("customerCreateDate", "futureOrPresent", new String[]{customer.getCustomerCode()}, "");
             }
         } catch (NullPointerException e) {

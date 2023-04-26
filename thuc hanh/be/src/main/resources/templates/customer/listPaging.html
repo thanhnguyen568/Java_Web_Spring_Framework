@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="row container-fluid">
-    <div class="topnav col-12">
+    <div class="topnav fixed-top col-12">
         <a href="#">Link</a>
         <a href="#">Link</a>
         <a href="#">Link</a>
@@ -18,21 +18,8 @@
     </div>
 
     <div class="col-2">
-        <div class="card">
-            <h3>Spring Framework</h3>
-            <div class=""><p>Spring MVC</p></div>
-            <div class=""><p>Spring Controller</p></div>
-            <div class=""><p>Spring Boot</p></div>
-            <div class=""><p>Views & Thymeleaf</p></div>
-            <div class=""><p>Data Binding & Form</p></div>
-            <div class=""><p>CSDL & ORM</p></div>
-            <div class=""><p>JPA</p></div>
-            <div class=""><p>Validation</p></div>
-            <div class=""><p>AOP & Exception Handling</p></div>
-            <div class=""><p>Session & Cookie</p></div>
-            <div class=""><p>Web Service & RESTful</p></div>
-            <div class=""><p>jQuery & AJAX</p></div>
-            <div class=""><p>Spring Security</p></div>
+        <div class="card item">
+            <h3 class="text-light">Spring Framework</h3>
         </div>
     </div>
 
@@ -43,7 +30,7 @@
                 <div class="input-group">
                     <input type="search" class="form-control" placeholder="Search" name="search"/>
                     <div class="input-group-btn">
-                        <button class="btn btn-default btn-primary" type="submit">Search</i></button>
+                        <button class="btn btn-default btn-success" type="submit">Search</i></button>
                     </div>
                 </div>
             </form>
@@ -61,14 +48,12 @@
                             <a th:href="@{/customers/create}" class="btn btn-primary btn-custom">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i> Add new
                             </a>
-                            <!-- Button trigger modal -->
 
                             <!-- Button trigger modal -->
                             <a type="button" class="btn btn-danger text-light" data-toggle="modal"
                                data-target="#modelId">
                                 <i class="fa-solid fa-trash-can"></i> Delete All
                             </a>
-
 
                         </tr>
                         <tr>
