@@ -92,12 +92,12 @@
                                 <a th:href="@{/customers/update(customerNo=*{customerNo})}">
                                     <button type="button" class="btn btn-warning text-light">Update</button>
                                 </a>
-                                <a>
+<!--                                <a>-->
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#staticBackdrop" th:attr="data-id=*{customerNo}">
                                         Delete
                                     </button>
-                                </a>
+<!--                                </a>-->
                             </td>
                         </tr>
                         </tbody>
@@ -151,7 +151,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a id="deleteLink" class="btn btn-danger">Delete</a>
+                                    <a id="deleteLink" class="btn btn-danger">Confirm</a>
                                 </div>
                             </div>
                         </div>

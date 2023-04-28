@@ -54,7 +54,6 @@ public class Customer {
         this.typeCustomer = typeCustomer;
     }
 
-
     public long getCustomerNo() {
         return customerNo;
     }
