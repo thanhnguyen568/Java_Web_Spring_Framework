@@ -23,5 +23,4 @@ public interface CustomerService {
     //    List<Customer> findAll();
 
     //    List<Customer> searchAll(String customerName, String customerAddress, String customerTel);
-
 }
