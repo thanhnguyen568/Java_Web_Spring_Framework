@@ -12,10 +12,10 @@ import java.util.List;
 
 @Repository
 public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {
-    List<Customer> findAllByCustomerNameContainingOrCustomerAddressContainingOrCustomerTelContaining(
-            String customerName,
-            String customerAddress,
-            String customerTel);
+//    List<Customer> findAllByCustomerNameContainingOrCustomerAddressContainingOrCustomerTelContaining(
+//            String customerName,
+//            String customerAddress,
+//            String customerTel);
 
     Page<Customer> findAllByCustomerNameContainingOrCustomerAddressContaining(
             String customerName,

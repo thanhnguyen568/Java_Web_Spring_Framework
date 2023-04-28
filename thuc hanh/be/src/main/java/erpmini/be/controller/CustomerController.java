@@ -122,11 +122,17 @@ public class CustomerController {
      * Delete
      */
     @PostMapping("/delete")
-    public String doDelete(@RequestParam("checkbox") long[] checkbox, Model model, RedirectAttributes redirect) {
+    public String doDeleteAll(@RequestParam("checkbox") long[] checkbox, Model model, RedirectAttributes redirect) {
         for (long no : checkbox) {
             customerService.remove(no);
             redirect.addFlashAttribute("message", "Removed successfully!");
         }
+        return "redirect:/customers";
+    }
+
+    @GetMapping ("/delete/{no}")
+    public String doDelete(@PathVariable Long no){
+        customerService.remove(no);
         return "redirect:/customers";
     }
 }

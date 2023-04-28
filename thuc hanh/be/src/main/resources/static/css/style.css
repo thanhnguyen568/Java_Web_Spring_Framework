@@ -72,6 +72,7 @@ body {
     background-color: white;
     padding: 20px;
     margin-top: 20px;
+    overflow: auto;
 }
 
 /* Clear floats after the columns */
