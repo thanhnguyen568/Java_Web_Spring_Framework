@@ -37,7 +37,7 @@ public class CustomerController {
 //                               @RequestParam("sort") Optional<String> sort,
                                Model model) {
         int currentPage = page.orElse(1);
-        int pageSize = size.orElse(3);
+        int pageSize = size.orElse(2);
         Sort sort = Sort.by("customerNo").ascending().and(Sort.by("customerCode").descending());
 
         Page<Customer> customers = customerService.findAllWithPaging(PageRequest.of(currentPage - 1, pageSize, sort));
@@ -57,8 +57,8 @@ public class CustomerController {
         int pageSize = size.orElse(2);
         Sort sort = Sort.by("customerNo").ascending().and(Sort.by("customerCode").ascending());
 
-        model.addAttribute("search", input);
         Page<Customer> customerPage = customerService.searchAllWithPage(input, input, PageRequest.of(currentPage - 1, pageSize, sort));
+        model.addAttribute("search", input);
         model.addAttribute("customers", customerPage);
         return "/customer/listPaging";
     }
