@@ -22,7 +22,7 @@ public class Customer {
     @NotBlank
     private String customerAddress;
 
-    @PastOrPresent(message = "{pastOrPresent}")
+//    @PastOrPresent(message = "{pastOrPresent}")
     private Date customerDateOfBirth;
 
     @Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})\\b", message = "{tel}")
@@ -41,7 +41,9 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(long customerNo, String customerCode, Date customerCreateDate, String customerName, String customerAddress, Date customerDateOfBirth, String customerTel, String customerEmail, String customerDeliveryAddress, TypeCustomer typeCustomer) {
+    public Customer(long customerNo, String customerCode, Date customerCreateDate, String customerName,
+                    String customerAddress, Date customerDateOfBirth, String customerTel, String customerEmail,
+                    String customerDeliveryAddress, TypeCustomer typeCustomer) {
         this.customerNo = customerNo;
         this.customerCode = customerCode;
         this.customerCreateDate = customerCreateDate;

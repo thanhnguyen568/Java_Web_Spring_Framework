@@ -27,18 +27,29 @@ public class CustomerValidate implements Validator {
         }
 
         Customer customer = (Customer) target;
-//        try {
-//            if (service.findByCustomerCodeContaining(customer.getCustomerCode()) != null) {
-//                errors.rejectValue("customerCode", "duplicateCode", new String[]{customer.getCustomerCode()}, "Code bị trùng lặp");
-//            }
-//        } catch (NullPointerException e) {
-//            e.printStackTrace();
-//        }
+        if (service.findByNo(customer.getCustomerNo()) != null) {
+            errors.rejectValue("customerNo", "duplicateNo", new Long[]{customer.getCustomerNo()},
+                    "No bị trùng lặp");
+        }
 
-        Date date = Date.valueOf(LocalDate.now());
+        //Birthdate
+        long mil = System.currentTimeMillis();
+        Date dateOf18 = new Date(mil - (24 * 60 * 60 * 1000 * 18 * 365L));
+        System.out.println(dateOf18);
         try {
-            if (customer.getCustomerCreateDate().before(date)) {
-                errors.rejectValue("customerCreateDate", "futureOrPresent", new String[]{customer.getCustomerCode()}, "");
+            if (customer.getCustomerDateOfBirth().after(dateOf18)) {
+                errors.rejectValue("customerDateOfBirth", "pastOrPresent", "");
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
+        //CreateDate
+        Date now = Date.valueOf(LocalDate.now());
+        System.out.println(now);
+        try {
+            if (customer.getCustomerCreateDate().before(now)) {
+                errors.rejectValue("customerCreateDate", "futureOrPresent", "");
             }
         } catch (NullPointerException e) {
             e.printStackTrace();

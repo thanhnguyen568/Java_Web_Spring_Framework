@@ -40,7 +40,7 @@ public class CustomerController {
         int pageSize = size.orElse(2);
         Sort sort = Sort.by("customerNo").ascending().and(Sort.by("customerCode").descending());
 
-        Page<Customer> customers = customerService.findAllWithPaging(PageRequest.of(currentPage - 1, pageSize, sort));
+        Page<Customer> customers = customerService.findAll(PageRequest.of(currentPage - 1, pageSize, sort));
         model.addAttribute("customers", customers);
         return "/customer/listPaging";
     }
@@ -57,18 +57,12 @@ public class CustomerController {
         int pageSize = size.orElse(2);
         Sort sort = Sort.by("customerNo").ascending().and(Sort.by("customerCode").ascending());
 
-        Page<Customer> customerPage = customerService.searchAllWithPage(input, input, PageRequest.of(currentPage - 1, pageSize, sort));
+        Page<Customer> customerPage = customerService.searchAll(input, input,
+                PageRequest.of(currentPage - 1, pageSize, sort));
         model.addAttribute("search", input);
         model.addAttribute("customers", customerPage);
         return "/customer/listPaging";
     }
-
-//    @GetMapping("search")
-//    public String search(@RequestParam("search") String input, Model model) {
-//        model.addAttribute("search", input);
-//        model.addAttribute("customers", customerService.searchAll(input, input, input));
-//        return "/customer/list";
-//    }
 
     /**
      * Create
@@ -130,8 +124,8 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
-    @GetMapping ("/delete/{no}")
-    public String doDelete(@PathVariable Long no){
+    @GetMapping("/delete/{no}")
+    public String doDeleteOne(@PathVariable Long no) {
         customerService.remove(no);
         return "redirect:/customers";
     }

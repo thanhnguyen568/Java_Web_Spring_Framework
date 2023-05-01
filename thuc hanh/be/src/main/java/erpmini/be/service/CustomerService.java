@@ -11,10 +11,9 @@ public interface CustomerService {
 
     void remove(Long customerNo);
 
-    Page<Customer> findAllWithPaging(Pageable pageable);
+    Page<Customer> findAll(Pageable pageable);
 
-//    Page<Customer> searchAllWithPage(String customerName, String customerAddress, Pageable pageable);
-    Page<Customer> searchAllWithPage(String customerName, String customerAddress, Pageable pageable);
+    Page<Customer> searchAll(String customerName, String customerAddress, Pageable pageable);
 
     //    Check duplicate code
     Customer findByCustomerCodeContaining(String customerCode);

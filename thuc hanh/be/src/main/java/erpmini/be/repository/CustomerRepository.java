@@ -10,11 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {
-//    List<Customer> findAllByCustomerNameContainingOrCustomerAddressContainingOrCustomerTelContaining(
-//            String customerName,
-//            String customerAddress,
-//            String customerTel);
-
     Page<Customer> findAllByCustomerNameContainingOrCustomerAddressContaining(
             String customerName,
             String customerAddress,
