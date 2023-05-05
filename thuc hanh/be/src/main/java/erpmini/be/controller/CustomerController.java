@@ -129,4 +129,16 @@ public class CustomerController {
         customerService.remove(no);
         return "redirect:/customers";
     }
+
+    /**
+     * View
+     */
+    @GetMapping("/view")
+    public String showFormView(@RequestParam Long customerNo, Model model) {
+        model.addAttribute("customer", customerService.findByNo(customerNo));
+
+        // Entity 2nd
+        model.addAttribute("types", typeService.findAll());
+        return "/customer/view";
+    }
 }

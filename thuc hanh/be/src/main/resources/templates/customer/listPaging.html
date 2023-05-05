@@ -73,8 +73,7 @@
                         <tbody th:if="${customers}">
                         <tr th:each="row,rowStat : ${customers}" th:object="${row}">
                             <td><input type="checkbox" th:name="checkbox" th:value="*{customerNo}"></td>
-                            <td><a th:href="@{/customers/view(customerCode=*{customerCode})}"
-                                   th:text="*{customerCode}"></a></td>
+                            <td th:text="*{customerCode}"></td>
                             <td th:text="*{customerCreateDate}"></td>
                             <td th:text="*{customerName}"></td>
                             <td th:text="*{customerAddress}"></td>
@@ -87,6 +86,11 @@
                                 <a th:href="@{/customers/update(customerNo=*{customerNo})}">
                                     <button type="button" class="btn btn-warning text-light">Update</button>
                                 </a>
+
+                                <a th:href="@{/customers/view(customerNo=*{customerNo})}">
+                                    <button type="button" class="btn btn-warning text-light">View</button>
+                                </a>
+
                                 <button type="button" class="btn btn-danger" data-toggle="modal"
                                         data-target="#staticBackdrop" th:attr="data-id=*{customerNo}">
                                     Delete
