@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <!-- Main CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="row container-fluid">
+    <div class="topnav fixed-top col-12">
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#" style="float:right">Link</a>
+    </div>
+
+    <div class="col-2">
+        <div class="card item">
+            <h3 class="text-light">Spring Framework</h3>
+        </div>
+    </div>
+
+    <div class="col-10">
+        <div class="card">
+            <form th:action="@{/bookCards/create}" th:object="${bookCard}" method="post" novalidate="novalidate"
+                  id="form-register">
+                <h3>Create new entry</h3>
+                <hr>
+
+                <label>bookCardNo<span style="color: red;"> *</span></label>
+                <div class="form-group">
+                    <input type="text" class="form-control" th:field="*{bookCardNo}"/>
+                    <span th:if="${#fields.hasErrors('bookCardNo')}" th:errors="*{bookCardNo}"
+                          style="color: red;"></span>
+                </div>
+
+                <label>dateOfBorrow<span style="color: red;"> *</span></label>
+                <div class="form-group">
+                    <input type="date" class="form-control" th:field="*{dateOfBorrow}"/>
+                    <span th:if="${#fields.hasErrors('dateOfBorrow')}" th:errors="*{dateOfBorrow}"
+                          style="color: red;"></span>
+                </div>
+
+                <label>dateOfPay<span style="color: red;"> *</span></label>
+                <div class="form-group">
+                    <input type="date" class="form-control" th:field="*{dateOfPay}"/>
+                    <span th:if="${#fields.hasErrors('dateOfPay')}" th:errors="*{dateOfPay}"
+                          style="color: red;"></span>
+                </div>
+
+                <label>Book<span style="color: red;"> *</span></label>
+                <div class="form-group" >
+                    <input type="text" class="form-control" th:field="*{book}"/>
+                    <span th:if="${#fields.hasErrors('book')}" th:errors="*{book}"
+                          style="color: red;"></span>
+                </div>
+
+                <label>Student<span style="color: red;"> *</span></label>
+                <div class="form-group">
+                    <select th:field="*{student}" class="form-control">
+                        <option th:each="s : ${students}"
+                                th:text="${s.studentName}"
+                                th:value="${s.studentNo}"></option>
+                    </select>
+                </div>
+
+                <button class="btn btn-danger btn-custom"><a th:href="@{/books}" style="color: #dddddd">Back to
+                    list</a>
+                </button>
+                <button type="submit" class="btn btn-primary btn-custom" tabindex="12"><i class="fa fa-check"
+                                                                                          aria-hidden="true"></i> Add
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Jquery 3.2.1  -->
+<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<!-- Bootstrap JS -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<!-- Custom JS -->
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>
