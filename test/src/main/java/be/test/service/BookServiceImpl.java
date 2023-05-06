@@ -20,18 +20,9 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> listAll() {
-        return (List<Book>) repository.findAll();
-    }
-
-    @Override
     public Book findByNo(Long bookNo) {
         return repository.findById(bookNo).orElse(null);
     }
 
-    @Override
-    public void changeQuantity(Long newQuantity) {
-        repository.DecreasedByHQL(newQuantity);
-    }
 
 }

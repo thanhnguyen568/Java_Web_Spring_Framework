@@ -5,6 +5,7 @@ import erpmini.be.entity.TypeCustomer;
 import java.util.List;
 
 public interface TypeCustomerService {
+    List<TypeCustomer> findAll();
 
     TypeCustomer findByNo(Long typeNo);
 
@@ -12,5 +13,4 @@ public interface TypeCustomerService {
 
     void remove(Long typeNo);
 
-    List<TypeCustomer> findAll();
 }

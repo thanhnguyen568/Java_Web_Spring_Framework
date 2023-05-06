@@ -15,8 +15,4 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<BookCard> bookCards;
 
-    @Override
-    public String toString() {
-        return studentName;
-    }
 }

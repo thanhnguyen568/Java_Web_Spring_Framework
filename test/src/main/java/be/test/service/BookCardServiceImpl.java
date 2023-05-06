@@ -23,8 +23,8 @@ public class BookCardServiceImpl implements BookCardService {
     }
 
     @Override
-    public void remove(Long bookCardNo) {
-        repository.deleteById(bookCardNo);
+    public void update(Long bookCardNo) {
+        repository.updateByHQL(bookCardNo);
     }
 
     @Override
@@ -32,8 +32,4 @@ public class BookCardServiceImpl implements BookCardService {
         return repository.findAll(pageable);
     }
 
-    @Override
-    public Page<BookCard> searchAll(String bookName, Pageable pageable) {
-        return null;
-    }
 }

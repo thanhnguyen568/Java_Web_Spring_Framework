@@ -25,17 +25,11 @@
 
     <div class="col-10">
         <div class="card">
-            <form th:action="@{/bookCards/create}" th:object="${bookCard}" method="post" novalidate="novalidate"
+            <form th:action="@{/bookCards/update}" th:object="${bookCard}" method="post" novalidate="novalidate"
                   id="form-register">
-                <h3>Create new entry</h3>
+                <h3>Update entry</h3>
                 <hr>
-
-<!--                <label>bookCardNo<span style="color: red;"> *</span></label>-->
-<!--                <div class="form-group">-->
-<!--                    <input type="text" class="form-control" th:field="*{bookCardNo}"/>-->
-<!--                    <span th:if="${#fields.hasErrors('bookCardNo')}" th:errors="*{bookCardNo}"-->
-<!--                          style="color: red;"></span>-->
-<!--                </div>-->
+                <input type="hidden" class="form-control" th:field="*{bookCardNo}"/>
 
                 <label>bookCardCode<span style="color: red;"> *</span></label>
                 <div class="form-group">
@@ -60,8 +54,7 @@
 
                 <label>Book<span style="color: red;"> *</span></label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="book.bookNo" name="book.bookNo"
-                           th:value="${book.bookNo}"/>
+                    <input type="text" class="form-control" th:field="*{book}"/>
                     <span th:if="${#fields.hasErrors('book')}" th:errors="*{book}"
                           style="color: red;"></span>
                 </div>

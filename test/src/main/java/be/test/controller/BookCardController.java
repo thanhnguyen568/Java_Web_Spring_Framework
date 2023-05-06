@@ -8,7 +8,6 @@ import be.test.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,7 +42,7 @@ public class BookCardController {
 
         Page<BookCard> bookCards = bookCardService.findAll(PageRequest.of(currentPage - 1, pageSize, sort));
         model.addAttribute("bookCards", bookCards);
-        return "/bookCard/listPaging";
+        return "bookCard/listCard";
     }
 
     /**
@@ -53,7 +52,9 @@ public class BookCardController {
     public String showFormCreate(@RequestParam Long bookNo, Model model) {
         model.addAttribute("bookCard", new BookCard());
         // Entity 2nd
-        model.addAttribute("book", bookService.findByNo(bookNo));
+        Book book = bookService.findByNo(bookNo);
+        model.addAttribute("book", book);
+        // Entity 3rd
         model.addAttribute("students", studentService.listAll());
         return "/bookCard/create";
     }
@@ -61,19 +62,43 @@ public class BookCardController {
     @PostMapping("/create")
     public String doCreate(@Valid @ModelAttribute("bookCard") BookCard bookCard, BindingResult bindingResult, Model model
             , RedirectAttributes redirect) {
-//        customerValidate.validate(customer, bindingResult);
-//        if (bindingResult.hasErrors()) {
-//            // Entity 2nd
-//            model.addAttribute("types", typeService.findAll());
-//            if (customer.getTypeCustomer() == null) {
-//                customer.setTypeCustomer(new TypeCustomer());
-//            }
-//            return "/customer/create";
-//        }
 
+        // Decreased Quantity Entity 2nd
+        Book book = bookService.findByNo(bookCard.getBookCardNo());
+//        Book book = bookCard.getBook();
+        Long newQuantity = book.getBookQuantity()-1;
+        book.setBookQuantity(newQuantity);
+
+        // Save new Book Card
         bookCardService.save(bookCard);
-//        bookService.changeQuantity(bookCard.getBook().getBookQuantity()-1);
         redirect.addFlashAttribute("message", "Create new successfully!");
+        return "redirect:/books";
+    }
+
+
+    /**
+     * Update
+     */
+    @GetMapping("/update")
+    public String showFormUpdate(@RequestParam Long bookCardNo, Model model) {
+        // Find Entity 1st
+        model.addAttribute("bookCard", bookCardService.findByNo(bookCardNo));
+
+        // Find Entity 2nd
+        model.addAttribute("students", studentService.listAll());
+        return "/bookCard/update";
+    }
+
+    @PostMapping("/update")
+    public String doUpdate(BookCard bookCard, RedirectAttributes redirect) {
+        // Decreased Quantity Entity 2nd
+        Book book = bookCard.getBook();
+        Long newQuantity = book.getBookQuantity()+1;
+        book.setBookQuantity(newQuantity);
+
+        // Update Entity 1st by ID
+        bookCardService.update(bookCard.getBookCardNo());
+        redirect.addFlashAttribute("message", "update successfully!");
         return "redirect:/books";
     }
 }

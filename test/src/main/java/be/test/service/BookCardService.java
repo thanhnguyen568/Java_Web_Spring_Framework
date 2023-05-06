@@ -9,9 +9,8 @@ public interface BookCardService {
 
     void save(BookCard bookCard);
 
-    void remove(Long bookCardNo);
+    void update(Long bookCardNo);
 
     Page<BookCard> findAll(Pageable pageable);
 
-    Page<BookCard> searchAll(String bookName, Pageable pageable);
 }

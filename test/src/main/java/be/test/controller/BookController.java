@@ -34,7 +34,7 @@ public class BookController {
 
         Page<Book> books = bookService.findAll(PageRequest.of(currentPage - 1, pageSize, sort));
         model.addAttribute("books", books);
-        return "/book/listPaging";
+        return "book/listBook";
     }
 
 }

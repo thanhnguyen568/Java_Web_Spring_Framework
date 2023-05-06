@@ -5,13 +5,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface CustomerService {
+    Page<Customer> findAll(Pageable pageable);
+
     Customer findByNo(Long customerNo);
 
     void save(Customer customer);
 
     void remove(Long customerNo);
-
-    Page<Customer> findAll(Pageable pageable);
 
     Page<Customer> searchAll(String customerName, String customerAddress, Pageable pageable);
 
