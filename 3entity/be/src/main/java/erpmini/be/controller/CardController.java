@@ -2,9 +2,11 @@ package erpmini.be.controller;
 
 import erpmini.be.entity.Book;
 import erpmini.be.entity.Card;
+import erpmini.be.entity.Student;
 import erpmini.be.service.BookService;
 import erpmini.be.service.CardService;
 import erpmini.be.service.StudentService;
+import erpmini.be.validate.CardValidate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,6 +29,8 @@ public class CardController {
     private StudentService studentService;
     @Autowired
     private CardService cardService;
+    @Autowired
+    private CardValidate cardValidate;
 
     /**
      * Search & Paging
@@ -63,6 +67,17 @@ public class CardController {
     @PostMapping("/create")
     public String doCreate(@Valid @ModelAttribute("card") Card card, BindingResult bindingResult, Model model
             , RedirectAttributes redirect) {
+
+        // Validate
+//        cardValidate.validate(card, bindingResult);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("students", studentService.findAll());
+            if (card.getStudent() == null) {
+                card.setStudent(new Student());
+            }
+            return "/card/create";
+        }
+
         // Decreased Quantity Entity 2nd
         // Book book = card.getBook();
         Book book = bookService.findByNo(card.getBook().getBookNo());
@@ -92,7 +107,7 @@ public class CardController {
     public String doUpdate(Card card, RedirectAttributes redirect) {
         // Decreased Quantity Entity 2nd
         Book book = card.getBook();
-        Long newQuantity = book.getBookQuantity()+1;
+        Long newQuantity = book.getBookQuantity() + 1;
         book.setBookQuantity(newQuantity);
 
         // Update Entity 1st by ID
@@ -103,9 +118,9 @@ public class CardController {
 
     @GetMapping("/delete/{cardNo}")
     public String doDeleteOne(@PathVariable Long cardNo) {
-        // Decreased Quantity Entity 2nd
+        // Increased Quantity Entity 2nd
         Book book = cardService.findByNo(cardNo).getBook();
-        Long newQuantity = book.getBookQuantity()+1;
+        Long newQuantity = book.getBookQuantity() + 1;
         book.setBookQuantity(newQuantity);
 
         cardService.update(cardNo);

@@ -79,6 +79,7 @@ public class CustomerController {
     @PostMapping("/create")
     public String doCreate(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult, Model model
             , RedirectAttributes redirect) {
+        // Validate
         customerValidate.validate(customer, bindingResult);
         if (bindingResult.hasErrors()) {
             // Entity 2nd
@@ -88,6 +89,7 @@ public class CustomerController {
             }
             return "/customer/create";
         }
+
         customerService.save(customer);
         redirect.addFlashAttribute("message", "Create new successfully!");
         return "redirect:/customers";
