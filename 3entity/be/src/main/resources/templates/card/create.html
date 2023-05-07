@@ -30,13 +30,6 @@
                 <h3>Create new entry</h3>
                 <hr>
 
-                <label>cardNo<span style="color: red;"> *</span></label>
-                <div class="form-group">
-                    <input type="text" class="form-control" th:field="*{cardNo}"/>
-                    <span th:if="${#fields.hasErrors('cardNo')}" th:errors="*{cardNo}"
-                          style="color: red;"></span>
-                </div>
-
                 <label>cardCode<span style="color: red;"> *</span></label>
                 <div class="form-group">
                     <input type="text" class="form-control" th:field="*{cardCode}"/>
@@ -60,11 +53,19 @@
 
                 <label>Book<span style="color: red;"> *</span></label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="book.bookNo" name="book.bookNo"
-                           th:value="${book.bookNo}" th:text="${book.bookName}" readonly/>
+                    <input type="text" class="form-control" th:field="*{book}" readonly/>
+                    <span th:text="*{book.bookName}" th:value="*{book.bookNo}"></span>
                     <span th:if="${#fields.hasErrors('book')}" th:errors="*{book}"
                           style="color: red;"></span>
                 </div>
+
+<!--                <label>Book<span style="color: red;"> *</span></label>-->
+<!--                <div class="form-group">-->
+<!--                    <input type="text" class="form-control" id="book.bookNo" name="book.bookNo"-->
+<!--                           th:value="${book.bookNo}" th:text="${book.bookName}" readonly/>-->
+<!--                    <span th:if="${#fields.hasErrors('book')}" th:errors="*{book}"-->
+<!--                          style="color: red;"></span>-->
+<!--                </div>-->
 
                 <label>Student<span style="color: red;"> *</span></label>
                 <div class="form-group">

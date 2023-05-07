@@ -53,11 +53,15 @@ public class CardController {
      */
     @GetMapping("/create")
     public String showFormCreate(@RequestParam Long bookNo, Model model) {
-        model.addAttribute("card", new Card());
+
+        Card card = new Card();
+        Book book = bookService.findByNo(bookNo);
+        card.setBook(book);
+        model.addAttribute("card", card);
 
         // Entity 2nd
-        Book book = bookService.findByNo(bookNo);
-        model.addAttribute("book", book);
+//        Book book = bookService.findByNo(bookNo);
+//        model.addAttribute("book", book);
 
         // Entity 3rd
         model.addAttribute("students", studentService.findAll());
@@ -69,7 +73,7 @@ public class CardController {
             , RedirectAttributes redirect) {
 
         // Validate
-//        cardValidate.validate(card, bindingResult);
+        cardValidate.validate(card, bindingResult);
         if (bindingResult.hasErrors()) {
             model.addAttribute("students", studentService.findAll());
             if (card.getStudent() == null) {
